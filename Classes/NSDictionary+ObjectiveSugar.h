@@ -10,6 +10,9 @@
 
 @interface NSDictionary (ObjectiveSugar)
 
++ (NSDictionary *)dictionaryByMerging:(NSDictionary *) dict1 with:(NSDictionary *) dict2;
+- (NSDictionary *)dictionaryByMergingWith:(NSDictionary *)dict;
+
 - (void)each:(void (^)(id key, id value))block;
 - (void)eachKey:(void (^)(id key))block;
 - (void)eachValue:(void (^)(id value))block;

@@ -155,6 +155,16 @@
     return self.reverseObjectEnumerator.allObjects;
 }
 
+- (NSArray *)compact {
+    id resultValues[self.count];
+    int count = 0;
+    for (id el in self) {
+        if (el != [NSNull null])
+            resultValues[count++] = el;
+    }
+    return [NSArray arrayWithObjects:resultValues count:count];
+}
+
 #pragma mark - Set operations
 
 - (NSArray *)intersectionWithArray:(NSArray *)array {

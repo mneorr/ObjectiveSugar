@@ -191,4 +191,11 @@
 
 - (NSArray *)symmetricDifference:(NSArray *)array;
 
+/**
+ Returns a copy of self with all NSNull elements removed.
+ 
+ @return A copy of self with all NSNull elements removed.
+ */
+- (NSArray *)compact;
+
 @end

@@ -176,11 +176,47 @@
 - (NSArray *)sortBy:(NSString*)key;
 
 /**
+ Sorts the array by mapping the values through the given block.
+ 
+ @return The sorted array
+ */
+- (NSArray *)sortWithBlock:(id (^)(id object))block;
+
+/**
  Alias for reverseObjectEnumerator.allObjects
  
  Returns a reversed array
  */
 - (NSArray *)reverse;
+
+/**
+ Find the index of the first object for which block returns YES.
+ 
+ @return An index or NSNotFound if not found
+ */
+- (NSUInteger)indexOf:(BOOL (^)(id object))block;
+
+/**
+ Returns two arrays, the first containing elements for
+ which block returns true, the second containing the rest.
+ 
+ @return An array containing the two arrays
+ */
+- (NSArray *)partition:(BOOL (^)(id object))block;
+
+/**
+ Returns an array with only the unique objects from self.
+ 
+ @return An array containing the unique objects
+ */
+- (NSArray *)uniq;
+
+/**
+ Compares self to another array using standard NSComparisonResult results
+ 
+ @return An NSComparisonResult
+ */
+- (NSComparisonResult)compare:(NSArray *)array;
 
 /**
  Return all the objects that are in both self and `array`.

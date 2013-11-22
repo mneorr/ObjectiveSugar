@@ -104,6 +104,12 @@ describe(@"NSArray categories", ^{
         }] should] equal:@[ @1, @2, @4, @5, @7, @8, @10 ]];
     });
     
+    it(@"-filter returns an array containing all the elements of NSArray for which block is true", ^{
+        [[[oneToTen reject:^BOOL(id object) {
+            return [object intValue] % 3 == 0;
+        }] should] equal:@[ @3, @6, @9]];
+    });
+    
     it(@"-flatten returns a one-dimensional array that is a recursive flattening of the array", ^{
         NSArray *multiDimensionalArray = @[ @[ @1, @2, @3 ], @[ @4, @5, @6, @[ @7, @8 ] ], @9, @10 ];
         [[[multiDimensionalArray flatten] should] equal:oneToTen];

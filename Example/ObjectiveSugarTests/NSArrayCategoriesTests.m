@@ -115,6 +115,12 @@ describe(@"NSArray categories", ^{
         [[[multiDimensionalArray flatten] should] equal:oneToTen];
     });
     
+    it(@"-foldLeft:reduce: returns an object made by applying reduce block for each element of array", ^{
+        [[[oneToTen foldLeftWithStart:@0 reduce:^id(id accumulator, id x) {
+            return @([accumulator intValue] + [x intValue]);
+        }] should] equal:@55];
+    });
+    
     context(@"array subsets", ^{
     
         it(@"creates subset of array", ^{

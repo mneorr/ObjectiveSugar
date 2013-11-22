@@ -145,6 +145,16 @@
     return array;
 }
 
+- (NSArray *)filter:(BOOL (^)(id))filterBlock
+{
+	NSMutableArray *result = [NSMutableArray array];
+	for (id obj in self) {
+		if (filterBlock(obj) == NO) continue;
+		[result addObject:obj];
+	};
+	return [result copy];
+}
+
 - (NSArray *)flatten {
     NSMutableArray *array = [NSMutableArray array];
     

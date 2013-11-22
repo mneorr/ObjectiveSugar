@@ -169,6 +169,14 @@
     return array;
 }
 
+- (id)foldLeftWithStart:(id)accumulator reduce:(id (^)(id accumulator, id x))block
+{
+	for (id x in self) {
+		accumulator = block(accumulator, x);
+	};
+	return accumulator;
+}
+
 - (NSString *)join {
     return [self componentsJoinedByString:@""];
 }

@@ -138,6 +138,16 @@
 - (NSArray *)reject:(BOOL (^)(id object))block;
 
 /**
+ Iterate through current array asking whether to not remove each element.
+ 
+ @param A block that returns YES/NO for whether the object should not be removed
+ @return An array of elements passed filter test
+ */
+
+- (NSArray *)filter:(BOOL (^)(id object))block;
+
+
+/**
  Recurse through self checking for NSArrays and extract all elements into one single array
 
  @return An array of all held arrays merged
@@ -145,6 +155,16 @@
 
 - (NSArray *)flatten;
 
+/** 
+ Applies a left fold to the array.
+ 
+ @param start The starting value for the fold. Used as `accumulator` for the
+          first fold.
+ @param reduce The block used to combine the accumulated value and the next value. Cannot be nil.
+ 
+ @return A reduced value.
+*/
+- (id)foldLeftWithStart:(id)accumulator reduce:(id (^)(id accumulator, id x))block;
 /**
  Alias for `componentsJoinedByString` with a default of no seperator
 

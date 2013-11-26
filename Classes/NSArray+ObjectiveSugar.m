@@ -70,6 +70,10 @@
     return [self containsObject:object];
 }
 
+- (BOOL) hasIndex:(int)index {
+    return index < self.count;
+}
+
 - (NSArray *)take:(NSUInteger)numberOfElements {
     numberOfElements = MIN(numberOfElements, [self count]);
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:numberOfElements];

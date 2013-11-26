@@ -68,6 +68,10 @@ describe(@"NSArray categories", ^{
         [[@([sampleArray includes:@"second"]) should] equal:@(YES)];
     });
     
+    it(@"checks that array contains the specified index", ^{
+        [[@([sampleArray hasIndex:10]) should] equal:@(NO)];
+    });
+    
     it(@"-map returns an array of objects returned by the block", ^{
         [[[sampleArray map:^id(id object) {
             return [NSNumber numberWithBool:[object isEqualToString:@"second"]];

@@ -71,6 +71,14 @@
 - (BOOL)includes:(id)object;
 
 /**
+ Check that array contains the specified index
+ 
+ @param An index that the array may or may not contain.
+ */
+
+- (BOOL)hasIndex:(int)index;
+
+/**
  Take the first `numberOfElements` out of the array, or the maximum amount of
  elements if it is less.
 

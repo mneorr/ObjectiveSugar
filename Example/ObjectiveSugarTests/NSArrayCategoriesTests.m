@@ -105,7 +105,7 @@ describe(@"NSArray categories", ^{
     });
     
     it(@"-filter returns an array containing all the elements of NSArray for which block is true", ^{
-        [[[oneToTen reject:^BOOL(id object) {
+        [[[oneToTen filter:^BOOL(id object) {
             return [object intValue] % 3 == 0;
         }] should] equal:@[ @3, @6, @9]];
     });

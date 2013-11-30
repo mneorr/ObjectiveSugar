@@ -11,22 +11,22 @@
 @implementation NSNumber (ObjectiveSugar)
 
 - (void)times:(void (^)(void))block {
-    for (int i = 0; i < self.intValue; i++)
+    for (NSInteger i = 0; i < self.intValue; i++)
         block();
 }
 
-- (void)timesWithIndex:(void (^)(int))block {
-    for (int i = 0; i < self.intValue; i++)
+- (void)timesWithIndex:(void (^)(NSInteger))block {
+    for (NSInteger i = 0; i < self.intValue; i++)
         block(i);
 }
 
-- (void)upto:(int)number do:(void (^)(int))block {
-    for (int i = self.intValue; i <= number; i++)
+- (void)upto:(NSInteger)number do:(void (^)(NSInteger))block {
+    for (NSInteger i = self.intValue; i <= number; i++)
         block(i);
 }
 
-- (void)downto:(int)number do:(void (^)(int))block {
-    for (int i = self.intValue; i >= number; i--)
+- (void)downto:(NSInteger)number do:(void (^)(NSInteger))block {
+    for (NSInteger i = self.intValue; i >= number; i--)
         block(i);
 }
 

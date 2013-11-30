@@ -33,8 +33,8 @@
     }];
 }
 
-- (void)eachWithIndex:(void (^)(id, int))block {
-    __block int counter = 0;
+- (void)eachWithIndex:(void (^)(id, NSInteger))block {
+    __block NSInteger counter = 0;
     [self enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         block(obj, counter);
         counter ++;

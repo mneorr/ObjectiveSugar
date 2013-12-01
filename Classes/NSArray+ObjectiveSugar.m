@@ -60,7 +60,7 @@
     
 }
 
-- (void)eachWithIndex:(void (^)(id object, int index))block {
+- (void)eachWithIndex:(void (^)(id object, NSInteger index))block {
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         block(obj, idx); 
     }];

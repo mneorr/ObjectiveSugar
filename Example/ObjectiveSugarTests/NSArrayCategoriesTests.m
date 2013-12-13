@@ -197,6 +197,24 @@ describe(@"NSArray categories", ^{
         });
 
     });
+	
+	context(@"grouping", ^{
+		it(@"-groupBy groups array to dictionary where keys are results of block", ^{
+			[[[@[@1, @2, @3, @4, @5, @6] groupBy:^id(NSNumber *object) {
+				return @([object integerValue] % 3);
+			}] should] equal:@{@1: @[@1, @4], @2: @[@2, @5], @0: @[@3, @6]}];
+		});
+		
+		it(@"-groupBy throws exception when block result does not conform to <NSCopying>", ^{
+			[[theBlock(^{
+				[@[@1] groupBy:^id(id object) {
+					return [[NSObject alloc] init];
+				}];
+			}) should] raiseWithName:NSGenericException];
+			
+		});
+		
+	});
     
 });
 

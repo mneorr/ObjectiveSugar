@@ -41,6 +41,17 @@
     return array;
 }
 
+- (NSDictionary *)dictionaryMap:(id (^)(id key, id value))block {
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+	
+	[self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		id result = block(key, obj);
+		dictionary[key] = result;
+	}];
+	
+	return dictionary;
+}
+
 - (BOOL)hasKey:(id)key {
     return !!self[key];
 }

@@ -68,6 +68,20 @@ describe(@"Iterators", ^{
         
         [[mapped should] equal:sampleDict.allValues];
     });
+	
+	it(@"maps new values to existing keys", ^{
+		NSDictionary *result = [sampleDict dictionaryMap:^id(id key, id value) {
+			counter++;
+			return @([value integerValue] + 1);
+		}];
+		
+		[[result should] equal:@{
+								@"one" : @2,
+								@"two" : @3,
+								@"three" : @4
+								}];
+
+	});
 });
 
 describe(@"Keys", ^{

@@ -176,6 +176,25 @@
     return self.reverseObjectEnumerator.allObjects;
 }
 
+- (NSDictionary *)groupBy:(id (^)(id object))block {
+	NSMutableDictionary *dictionary  = [NSMutableDictionary dictionary];
+		
+	for (id object in self) {
+		id key = block(object);
+
+		if (![key conformsToProtocol:@protocol(NSCopying)]) {
+			[NSException raise:NSGenericException format:@"%@ does not conform to <NSCopying", object];
+		}
+		
+		if (!dictionary[key]) {
+			dictionary[key] = [NSMutableArray arrayWithObject:object];
+		} else {
+			[dictionary[key] addObject:object];
+		}
+	}
+	return dictionary;
+}
+
 #pragma mark - Set operations
 
 - (NSArray *)intersectionWithArray:(NSArray *)array {

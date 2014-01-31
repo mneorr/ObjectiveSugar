@@ -13,10 +13,7 @@
 @implementation NSArray (ObjectiveSugar)
 
 - (id)first {
-    if (self.count > 0)
-        return self[0];
-
-    return nil;
+    return [self firstObject];
 }
 
 - (id)last {

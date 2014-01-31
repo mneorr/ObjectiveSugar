@@ -10,8 +10,6 @@
 
 @interface NSSet (Accessors)
 
-@property(readonly) id first;
-@property(readonly) id last;
 @property(readonly) id sample;
 
 - (void)each:(void (^)(id object))block;

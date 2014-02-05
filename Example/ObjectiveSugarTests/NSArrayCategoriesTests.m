@@ -190,6 +190,27 @@ describe(@"NSArray categories", ^{
         });
     });
     
+    context(@"comparing two arrays", ^{
+        NSArray *empty = @[ ];
+        NSArray *a = @[ @2, @3 ];
+        NSArray *b = @[ @2, @4 ];
+        NSArray *c = @[ @2, @3, @4 ];
+        
+        // empty arrays
+        it(@"empty array == empty array", ^{ [[@([empty compare:empty]) should] equal:@(NSOrderedSame)]; });
+        it(@"empty array < some array", ^{ [[@([empty compare:a]) should] equal:@(NSOrderedAscending)]; });
+        it(@"some array > empty array", ^{ [[@([a compare:empty]) should] equal:@(NSOrderedDescending)]; });
+        
+        // simple case
+        it(@"2,3 == 2,3", ^{ [[@([a compare:a]) should] equal:@(NSOrderedSame)]; });
+        it(@"2,3 < 2,4", ^{ [[@([a compare:b]) should] equal:@(NSOrderedAscending)]; });
+        it(@"2,4 > 2,3", ^{ [[@([b compare:a]) should] equal:@(NSOrderedDescending)]; });
+
+        // length mismatches
+        it(@"2,3 < 2,3,4", ^{ [[@([a compare:c]) should] equal:@(NSOrderedAscending)]; });
+        it(@"2,3,4 > 2,3", ^{ [[@([c compare:a]) should] equal:@(NSOrderedDescending)]; });
+    });
+    
     context(@"sorting", ^{
        
         it(@"-sort aliases -sortUsingComparator:", ^{
@@ -203,9 +224,46 @@ describe(@"NSArray categories", ^{
             NSDictionary *dict_4 = @{@"name": @"3"};
             [[[@[ dict_4, dict_1, dict_3, dict_2 ] sortBy:@"name"] should] equal:@[ dict_1, dict_2, dict_3, dict_4 ]];
         });
-
+        
+        it(@"-sortWithBlock sorts with the given block", ^{
+            NSArray *a = [@"the quick brown fox jumped over the lazy dog" split:@" "];
+            NSArray *b = [a sortWithBlock:^id(id object) {
+                return @[ @([object length]), object ];
+            }];
+            NSLog(@"%@", b);
+            [[[a sortWithBlock:^id(id object) {
+                return @[ @([object length]), object ];
+            }] should] equal: [@"dog fox the the lazy over brown quick jumped" split:@" "]];
+        });
     });
     
+    context(@"-indexOf", ^{
+        BOOL(^lookForSecond)(id i) = ^(id i) {
+            return [@"second" isEqualToString:i];
+        };
+        
+        it(@"finds an index for an element in the array", ^{
+            [[@([sampleArray indexOf:lookForSecond]) should] equal:@1];
+        });
+        
+        it(@"returns NSNotFound if the element isn't present", ^{
+            [[@([@[@"foo"] indexOf:lookForSecond]) should] equal:@(NSNotFound)];
+        });
+    });
+    
+    it(@"-partition divides into even and odd", ^{
+        NSArray *evenOdd = [oneToTen partition:^BOOL(id object) {
+            return [object intValue] % 2 == 0;
+        }];
+        [[evenOdd[0] should] equal:@[@2, @4, @6, @8, @10]];
+        [[evenOdd[1] should] equal:@[@1, @3, @5, @7, @9]];
+    });
+
+    it(@"-uniq removes duplicate elements", ^{
+        NSMutableArray *dups = [NSMutableArray arrayWithArray:sampleArray];
+        [dups addObjectsFromArray:sampleArray];
+        [[[[dups uniq] sort] should] equal:[sampleArray sort]];
+    });
 });
 
 

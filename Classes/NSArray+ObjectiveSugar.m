@@ -180,8 +180,54 @@ static NSString * const OSMinusString = @"-";
     return [self sortedArrayUsingDescriptors:@[descriptor]];
 }
 
+- (NSArray *)sortWithBlock:(id (^)(id object))block {
+    NSArray *tuples = [self map:^(id object) { return @[block(object), object]; }];
+    return [tuples.sort map:^id(id object) { return object[1]; }];
+}
+
 - (NSArray *)reverse {
     return self.reverseObjectEnumerator.allObjects;
+}
+
+- (NSUInteger)indexOf:(BOOL (^)(id object))block {
+    __block NSUInteger result = NSNotFound;
+    [self enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		if (block(object)) {
+            result = index;
+            *stop = YES;
+        }
+	}];
+    return result;
+}
+
+- (NSArray *)partition:(BOOL (^)(id object))block {
+    NSMutableArray *yes = [NSMutableArray array];
+    NSMutableArray *no = [NSMutableArray array];
+    for (id object in self) {
+        [(block(object) ? yes : no) addObject:object];
+    }
+    return @[ yes, no ];
+}
+
+- (NSArray *)uniq {
+    return [[NSSet setWithArray:self] allObjects];
+}
+
+// note: this is required for sortWithBlock
+- (NSComparisonResult)compare:(NSArray *)array {
+    for (int index = 0; index < MAX(self.count, array.count); ++index) {
+        if (self.count <= index) {
+            return NSOrderedAscending;
+        }
+        if (array.count <= index) {
+            return NSOrderedDescending;
+        }
+        NSComparisonResult result = [self[index] compare:array[index]];
+        if (result != NSOrderedSame) {
+            return result;
+        }
+    }
+    return NSOrderedSame;
 }
 
 #pragma mark - Set operations

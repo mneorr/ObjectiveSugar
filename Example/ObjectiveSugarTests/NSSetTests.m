@@ -36,7 +36,11 @@ describe(@"Iterators", ^{
             }];
             [[duplicate should] beEmpty];
         });
-        
+        it(@"-all returns true if all elements match the condition in the block", ^{
+            [[@([sampleSet all:^BOOL(id object) {
+                return object!=nil;
+            }]) should] equal:@(YES)];
+        });
     });
     
     context(@"first, last, sample", ^{

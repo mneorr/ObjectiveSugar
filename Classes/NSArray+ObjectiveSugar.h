@@ -149,6 +149,15 @@
 - (NSArray *)reject:(BOOL (^)(id object))block;
 
 /**
+ Iterate through current array and evaluate the condition on each element
+ 
+ @param A block that returns YES/NO
+ */
+
+- (BOOL)all:(BOOL (^)(id object))condition;
+
+
+/**
  Recurse through self checking for NSArrays and extract all elements into one single array
 
  @return An array of all held arrays merged

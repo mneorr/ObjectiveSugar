@@ -40,6 +40,7 @@ describe(@"NSArray categories", ^{
         [emptyArray.sample shouldBeNil];
     });
 
+
     context(@"Iterating using block", ^{
        
         it(@"iterates using -each:^", ^{
@@ -97,7 +98,12 @@ describe(@"NSArray categories", ^{
             return [object integerValue] % 3 == 0;
         }] should] equal:@[ @3, @6, @9 ]];
     });
-
+    it(@"-all returns true if all elements match the condition in the block", ^{
+        [[@([sampleArray all:^BOOL(id object) {
+            return object!=nil;
+        }]) should] equal:@(YES)];
+    });
+    
     it(@"-detect returns the first element in NSArray for which block is true", ^{
         [[[oneToTen detect:^BOOL(id object) {
             return [object intValue] % 3 == 0;

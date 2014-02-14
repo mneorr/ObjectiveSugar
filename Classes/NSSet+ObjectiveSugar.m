@@ -64,6 +64,17 @@
     return array;
 }
 
+-(BOOL)all:(BOOL (^)(id))condition {
+    
+    for (id object in self) {
+        if (!condition(object)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 - (NSArray *)reject:(BOOL (^)(id object))block {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.count];
     

@@ -11,20 +11,8 @@
 
 @implementation NSSet (ObjectiveSugar)
 
-- (id)first {
-    NSArray *allObjects = self.allObjects;
-
-    if (allObjects.count > 0)
-        return allObjects[0];
-    return nil;
-}
-
-- (id)last {
-    return self.allObjects.lastObject;
-}
-
 - (id)sample {
-    return [self.allObjects sample];
+    return [self anyObject];
 }
 
 - (void)each:(void (^)(id))block {

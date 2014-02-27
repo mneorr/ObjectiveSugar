@@ -28,7 +28,13 @@
  
  @return First array item or nil.
  */
+
 - (NSArray *)pop:(NSUInteger)numberOfElements;
+
+/**
+ * Adds the elements of another array into self
+ **/
+
 - (void)concat:(NSArray *)array;
 
 

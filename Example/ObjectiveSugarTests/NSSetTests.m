@@ -74,13 +74,24 @@ describe(@"Iterators", ^{
         it(@"-map returns an array of objects returned by the block", ^{
             [[[sampleSet map:^id(id object) {
                 return [NSNumber numberWithBool:[object isEqualToString:@"third"]];
-            }] should] equal:@[ @(NO), @(YES), @(NO) ]]; // Order of NSSet is not guaranteed
+            }] should] equal:@[ @(NO), @(NO), @(YES) ]]; // Order of NSSet is not guaranteed
             
             [[[cars map:^id(id car){
                 return @([[car substringToIndex:1] isEqualToString:@"F"]);
             }] should] equal:@[ @(YES), @(YES), @(NO) ]]; // Order of NSSet is not guaranteed
         });
-        
+
+        it(@"-map doesnt crash on nil", ^{
+            // This is a trivial test case ( because you could use select)
+            // but returning nil is a valid option for init methods or elsewhere
+
+            [[[sampleSet map:^id(id object) {
+                return [object isEqualToString:@"third"] ? object : nil;
+            }] should] equal:@[ @"third" ]];
+
+        });
+
+
         it(@"-select returns an array containing all the elements of NSArray for which block is not false", ^{
             [[[cars select:^BOOL(NSString *car) {
                 return [car isEqualToString:@"F50"];

@@ -31,6 +31,15 @@
  */
 - (id)sample;
 
+/**
+ Take random `numberOfElements` out of the array, or the maximum amount of
+ elements if it is less.
+ 
+ @param Number of random elements to take from array
+ @return An array of elements
+ */
+- (NSArray *)sample:(NSUInteger)numberOfElements;
+
 /// Alias for -sample
 - (id)anyObject;
 

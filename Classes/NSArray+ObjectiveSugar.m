@@ -21,6 +21,19 @@ static NSString * const OSMinusString = @"-";
     return self[index];
 }
 
+- (NSArray *)sample:(NSUInteger)numberOfElements {
+  if (numberOfElements > self.count) {
+    numberOfElements = self.count;
+  }
+  NSMutableArray *array = [NSMutableArray arrayWithArray:self];
+  for (NSUInteger i = 0; i < numberOfElements; i++) {
+    NSInteger size = array.count - i;
+    NSInteger r = (arc4random() % size) + i;
+    [array exchangeObjectAtIndex:i withObjectAtIndex:r];
+  }
+  return [array subarrayWithRange:NSMakeRange(0, numberOfElements)];
+}
+
 - (id)objectForKeyedSubscript:(id)key {
     if ([key isKindOfClass:[NSString class]])
         return [self subarrayWithRange:[self rangeFromString:key]];

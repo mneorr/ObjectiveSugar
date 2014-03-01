@@ -29,6 +29,17 @@ describe(@"NSArray categories", ^{
         NSArray *emptyArray = @[];
         [emptyArray.sample shouldBeNil];
     });
+  
+    it(@"-sample: returns an array of random elements with given count", ^{
+      NSArray *result = [sampleArray sample:2];
+      [[result should] haveCountOf:2];
+      [[sampleArray should] containObjectsInArray:result];
+    });
+  
+    it(@"-sample: returns an array of maximum amount when it is less than given count" , ^{
+      [[[sampleArray sample:12] should] haveCountOf:3];
+      [[[sampleArray sample:-1] should] haveCountOf:3];
+    });
 
     context(@"Iterating using block", ^{
        

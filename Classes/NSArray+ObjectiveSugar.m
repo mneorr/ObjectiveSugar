@@ -144,6 +144,15 @@ static NSString * const OSMinusString = @"-";
     }
     return true;
 }
+
+-(BOOL)any:(BOOL (^)(id))condition {
+    for (id object in self) {
+        if (condition(object)) {
+            return true;
+        }
+    }
+    return false;
+}
 - (id)detect:(BOOL (^)(id object))block {
 
     for (id object in self) {

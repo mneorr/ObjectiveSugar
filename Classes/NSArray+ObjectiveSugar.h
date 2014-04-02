@@ -156,7 +156,13 @@
 
 - (BOOL)all:(BOOL (^)(id object))condition;
 
+/**
+ Iterate through the current array and return true if element matches the condition given in the block
+ 
+ @param A block that returns YES/NO
+ */
 
+-(BOOL)any:(BOOL(^)(id object))condition;
 /**
  Recurse through self checking for NSArrays and extract all elements into one single array
 

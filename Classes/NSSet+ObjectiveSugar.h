@@ -21,6 +21,7 @@
 - (NSArray *)reject:(BOOL (^)(id object))block;
 - (NSArray *)map:(id (^)(id object))block;
 - (BOOL)all:(BOOL (^)(id object))condition;
+- (BOOL)any:(BOOL (^)(id object))condition;
 - (NSArray *)sort;
 
 @end

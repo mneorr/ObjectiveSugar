@@ -81,6 +81,10 @@ describe(@"NSArray categories", ^{
             return [NSNumber numberWithBool:[object isEqualToString:@"second"]];
         }] should] equal:@[ @(NO), @(YES), @(NO) ]];
     });
+    
+    it(@"-mapSelector returns an array of objects on which selector has been perform", ^{
+        [[[sampleArray mapSelector:@selector(uppercaseString)] should] equal:@[ @"FIRST", @"SECOND", @"THIRD" ]];
+    });
 
     it(@"-select returns an array containing all the elements of NSArray for which block is not false", ^{
         [[[oneToTen select:^BOOL(id object) {

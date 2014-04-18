@@ -105,6 +105,14 @@ static NSString * const OSMinusString = @"-";
     return array;
 }
 
+- (NSArray *)mapSelector:(SEL)selector {
+    return [self map:^id(id object) {
+        IMP imp = [object methodForSelector:selector];
+        id (*func)(id, SEL) = (void *)imp;
+        return func(object, selector);
+    }];
+}
+
 - (NSArray *)select:(BOOL (^)(id object))block {
     return [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return block(evaluatedObject);

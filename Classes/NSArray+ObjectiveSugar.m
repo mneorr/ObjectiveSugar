@@ -157,6 +157,14 @@ static NSString * const OSMinusString = @"-";
     return [self componentsJoinedByString:separator];
 }
 
+- (id)transform:(id(^)(id object, id para))block initial:(id)initial{
+    __block id applied = initial;
+    [self each:^(id object) {
+        applied = block(object,applied);
+    }];
+    return applied;
+}
+
 - (NSArray *)sort {
     return [self sortedArrayUsingSelector:@selector(compare:)];
 }

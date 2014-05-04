@@ -219,6 +219,23 @@ describe(@"NSArray categories", ^{
 
     });
     
+    context(@"Transform", ^{
+        it(@"Sum array of numbers", ^{
+            NSNumber* sum = [@[@1, @2, @3, @4] transform:^id(id object, id para) {
+                return @([object doubleValue] + [para doubleValue]);
+            } initial:@0];
+            [[sum should]equal:@10];
+        });
+        
+        it(@"Max of array of number", ^{
+            NSNumber* max = [@[@1, @2, @3, @4] transform:^id(id object, id para) {
+                return [object doubleValue] > [para doubleValue] ? object : para;
+            } initial:@0];
+            [[max should]equal:@4];
+        });
+        
+    });
+    
 });
 
 
@@ -250,5 +267,4 @@ describe(@"Set operations", ^{
 
 
 SPEC_END
-
 

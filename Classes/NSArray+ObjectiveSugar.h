@@ -181,6 +181,15 @@
 - (NSString *)join:(NSString *)separator;
 
 /**
+ Iterate through the current array running the block on each object and current tranformed value and
+ returning an final transformed value
+ 
+ @param a block that is used to transform value and initialized value
+ @return final transformed value
+ */
+- (id)transform:(id(^)(id object, id para))block initial:(id)initial;
+
+/**
  Run the default comparator on each object in the array
  
  @return A sorted copy of the array
@@ -234,5 +243,7 @@
  @return An array of elements which are in either of the arrays and not in their intersection.
  */
 - (NSArray *)symmetricDifference:(NSArray *)array;
+
+
 
 @end

@@ -62,6 +62,12 @@ describe(@"NSMutableArray categories", ^{
         }] should] equal:@[ @8 ]];
     });
     
+    mutableArray = [NSMutableArray arrayWithObjects:@1, @3, @10, nil];
+    it(@"checks that consecutive removals are performed", ^{
+        [[[mutableArray keepIf:^BOOL(id object) {
+            return [object intValue] > 5;
+        }] should] equal:@[ @10 ]];
+    });
 });
 
 SPEC_END

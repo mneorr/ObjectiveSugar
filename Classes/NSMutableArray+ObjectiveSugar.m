@@ -51,13 +51,16 @@
 }
 
 - (NSArray *)keepIf:(BOOL (^)(id object))block {
-    for (NSUInteger i = 0; i < self.count; i++) {
+    for (NSUInteger i = 0; i < self.count; ) {
         id object = self[i];
         if (block(object) == NO) {
             [self removeObject:object];
         }
+        else {
+            i++;
+        }
     }
-    
+
     return self;
 }
 

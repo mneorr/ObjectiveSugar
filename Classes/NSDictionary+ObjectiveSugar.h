@@ -16,4 +16,9 @@
 - (NSArray *)map:(id (^)(id key, id value))block;
 - (BOOL)hasKey:(id)key;
 
+/**
+ Check if a dictionary is empy
+ @return YES if dictionary is empty, otherwise NO
+ */
+- (BOOL)isEmpty;
 @end

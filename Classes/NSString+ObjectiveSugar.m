@@ -58,4 +58,9 @@ NSString *NSStringWithFormat(NSString *formatString, ...) {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (BOOL)isEmpty
+{
+  return self.length == 0;
+}
+
 @end

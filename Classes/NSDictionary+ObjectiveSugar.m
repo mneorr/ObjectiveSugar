@@ -45,4 +45,9 @@
     return !!self[key];
 }
 
+- (BOOL)isEmpty
+{
+  return [self count] == 0;
+}
+
 @end

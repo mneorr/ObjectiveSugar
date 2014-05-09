@@ -56,7 +56,17 @@ describe(@"Additions", ^{
     it(@"-strip strips whitespaces and newlines from both ends", ^{
         [[[@"\n  Look mo, no empties!\n \n\n  " strip] should] equal:@"Look mo, no empties!"];
     });
+  
+    context(@"empty", ^{
+    
+        it(@"shold be empty", ^{
+          [[theValue([@"" isEmpty]) should] beTrue];
+        });
 
+        it(@"Shold not be empty", ^{
+          [[theValue([@"Not empty" isEmpty]) shouldNot] beTrue];
+        });
+    });
 });
 
 

@@ -31,6 +31,11 @@
 
 - (NSArray *)sort;
 
+/**
+ Check if a set is empy
+ @return YES if set is empty, otherwise NO
+ */
+- (BOOL)isEmpty;
 
 #pragma mark - Deprecations
 

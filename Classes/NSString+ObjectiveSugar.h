@@ -52,5 +52,10 @@ NSString *NSStringWithFormat(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
  */
 - (NSString *)strip;
 
+/**
+ Check if an string is empy
+ @return YES if string is empty, otherwise NO
+ */
+- (BOOL)isEmpty;
 @end
 

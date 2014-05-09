@@ -193,6 +193,11 @@ static NSString * const OSMinusString = @"-";
     return [aSubtractB unionWithArray:bSubtractA];
 }
 
+- (BOOL)isEmpty
+{
+  return [self count] == 0;
+}
+
 #pragma mark - Private
 
 static inline BOOL isBackwardsRange(NSString *rangeString) {

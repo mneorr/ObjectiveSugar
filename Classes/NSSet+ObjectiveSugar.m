@@ -81,6 +81,10 @@
     return [self sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
+- (BOOL)isEmpty
+{
+  return [self count] == 0;
+}
 
 #pragma mark - Deprecations
 

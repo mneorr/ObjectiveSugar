@@ -218,7 +218,20 @@ describe(@"NSArray categories", ^{
         });
 
     });
+  
+  context(@"empty", ^{
+
+    it(@"shold be empty", ^{
+      NSArray *empty = @[];
+      [[theValue([empty isEmpty]) should] beTrue];
+    });
     
+    it(@"Shold not be empty", ^{
+      [[theValue([oneToTen isEmpty]) shouldNot] beTrue];
+    });
+    
+  });
+  
 });
 
 

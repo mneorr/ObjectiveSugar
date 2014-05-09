@@ -235,4 +235,10 @@
  */
 - (NSArray *)symmetricDifference:(NSArray *)array;
 
+/**
+  Check if an array is empy
+  @return YES if array is empty, otherwise NO
+ */
+- (BOOL)isEmpty;
+
 @end

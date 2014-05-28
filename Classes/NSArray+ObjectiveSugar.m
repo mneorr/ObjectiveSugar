@@ -105,7 +105,11 @@ static NSString * const OSMinusString = @"-";
 - (NSArray *)pluck:(NSString *)property
 {
   return [self map:^id(id object) {
-    return object[property];
+    if (![object respondsToSelector:@selector(objectForKey:)]) {
+      return nil;
+    }
+    
+    return [object objectForKey:property];
   }];
 }
 

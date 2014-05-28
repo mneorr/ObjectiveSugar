@@ -87,7 +87,7 @@ describe(@"NSArray categories", ^{
     });
   
     it(@"-pluck returns an array of property values from an array of dictionaries", ^{
-        NSArray *users = @[@{@"name": @"Marin", @"super": @(YES)}, @{}, @{@"name": @"Neil", @"super": @(NO)}];
+        NSArray *users = @[@{@"name": @"Marin", @"super": @(YES)}, @{}, @{@"name": @"Neil", @"super": @(NO)}, @"Just a string"];
         NSArray *plucked = [users pluck:@"super"];
         [[plucked should] containObjects:@(YES), @(NO), nil];
     });

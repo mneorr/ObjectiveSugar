@@ -102,6 +102,17 @@ static NSString * const OSMinusString = @"-";
     return array;
 }
 
+- (NSArray *)pluck:(NSString *)property
+{
+  return [self map:^id(id object) {
+    if (![object respondsToSelector:@selector(objectForKey:)]) {
+      return nil;
+    }
+    
+    return [object objectForKey:property];
+  }];
+}
+
 - (NSArray *)select:(BOOL (^)(id object))block {
     return [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return block(evaluatedObject);

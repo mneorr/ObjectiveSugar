@@ -112,11 +112,20 @@
 /**
  Iterate through the current array running the block on each object and
  returning an array of the changed objects.
-
+ 
  @param A block that passes in each object and returns a modified object
  @return An array of modified elements
  */
 - (NSArray *)map:(id (^)(id object))block;
+
+/**
+ A convenient version of one the most common use cases for map, it returns
+ an array of property values given an array of dictionaries.
+ 
+ @param The property to extract
+ @return An of property values
+ */
+- (NSArray *)pluck:(NSString *)property;
 
 /**
  Iterate through current array asking whether to keep each element.

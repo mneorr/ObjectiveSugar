@@ -85,6 +85,12 @@ describe(@"NSArray categories", ^{
             return user[@"name"];
         }] should] equal:[users valueForKeyPath:@"name"]];
     });
+  
+    it(@"-pluck returns an array of property values from an array of dictionaries", ^{
+        NSArray *users = @[@{@"name": @"Marin", @"super": @(YES)}, @{}, @{@"name": @"Neil", @"super": @(NO)}, @"Just a string"];
+        NSArray *plucked = [users pluck:@"super"];
+        [[plucked should] containObjects:@(YES), @(NO), nil];
+    });
 
     it(@"-select returns an array containing all the elements of NSArray for which block is not false", ^{
         [[[oneToTen select:^BOOL(id object) {

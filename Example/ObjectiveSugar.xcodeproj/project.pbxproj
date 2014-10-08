@@ -42,8 +42,8 @@
 
 /* Begin PBXFileReference section */
 		32DEFD3FCB544122AD940C8F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F587282001D443A984A6180 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		8189240A1CA64985821AC534 /* Pods-ObjectiveSugarTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectiveSugarTests.xcconfig"; path = "Pods/Pods-ObjectiveSugarTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		3BECC6D8AD1F2AF8B95CD17D /* Pods-ObjectiveSugarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectiveSugarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjectiveSugarTests/Pods-ObjectiveSugarTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D73DD800C493595E96BF6AC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		89690129173C0E4C00B403D2 /* ObjectiveSugar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectiveSugar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8969012C173C0E4C00B403D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8969012E173C0E4C00B403D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,7 +57,7 @@
 		8969013E173C0E4C00B403D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		89690140173C0E4C00B403D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		89690142173C0E4C00B403D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		89690149173C0E4C00B403D2 /* ObjectiveSugarTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjectiveSugarTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89690149173C0E4C00B403D2 /* ObjectiveSugarTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ObjectiveSugarTests.octest; path = ObjectiveSugarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89690152173C0E4C00B403D2 /* ObjectiveSugarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjectiveSugarTests-Info.plist"; sourceTree = "<group>"; };
 		89690154173C0E4C00B403D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89690161173C16A100B403D2 /* CAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAdditionsTests.m; sourceTree = "<group>"; };
@@ -67,7 +67,9 @@
 		89690165173C16A100B403D2 /* NSNumberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberTests.m; sourceTree = "<group>"; };
 		89690166173C16A100B403D2 /* NSSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSetTests.m; sourceTree = "<group>"; };
 		89690167173C16A100B403D2 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
+		A80D594E8853E9A0E4FD8637 /* Pods-ObjectiveSugarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectiveSugarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjectiveSugarTests/Pods-ObjectiveSugarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3D0B2406C7A45249244F020 /* libPods-ObjectiveSugarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjectiveSugarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3ABD5F7FE7A23889AB17EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C5FCA2319671F5AF7B3D6D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D73DD800C493595E96BF6AC /* Pods.debug.xcconfig */,
+				FD3ABD5F7FE7A23889AB17EA /* Pods.release.xcconfig */,
+				A80D594E8853E9A0E4FD8637 /* Pods-ObjectiveSugarTests.debug.xcconfig */,
+				3BECC6D8AD1F2AF8B95CD17D /* Pods-ObjectiveSugarTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		89690120173C0E4B00B403D2 = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +115,7 @@
 				89690150173C0E4C00B403D2 /* ObjectiveSugarTests */,
 				8969012B173C0E4C00B403D2 /* Frameworks */,
 				8969012A173C0E4C00B403D2 /* Products */,
-				3F587282001D443A984A6180 /* Pods.xcconfig */,
-				8189240A1CA64985821AC534 /* Pods-ObjectiveSugarTests.xcconfig */,
+				7C5FCA2319671F5AF7B3D6D3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -281,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
 		174A1F9A81B44DC6B8B6DFD9 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -295,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ObjectiveSugarTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectiveSugarTests/Pods-ObjectiveSugarTests-resources.sh\"\n";
 		};
 		468DABF301EC4EC1A00CC4C2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -410,6 +422,8 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -440,6 +454,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -452,7 +468,7 @@
 		};
 		8969015C173C0E4C00B403D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F587282001D443A984A6180 /* Pods.xcconfig */;
+			baseConfigurationReference = 5D73DD800C493595E96BF6AC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -466,7 +482,7 @@
 		};
 		8969015D173C0E4C00B403D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F587282001D443A984A6180 /* Pods.xcconfig */;
+			baseConfigurationReference = FD3ABD5F7FE7A23889AB17EA /* Pods.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -480,7 +496,7 @@
 		};
 		8969015F173C0E4C00B403D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8189240A1CA64985821AC534 /* Pods-ObjectiveSugarTests.xcconfig */;
+			baseConfigurationReference = A80D594E8853E9A0E4FD8637 /* Pods-ObjectiveSugarTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ObjectiveSugar.app/ObjectiveSugar";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -498,7 +514,7 @@
 		};
 		89690160173C0E4C00B403D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8189240A1CA64985821AC534 /* Pods-ObjectiveSugarTests.xcconfig */;
+			baseConfigurationReference = 3BECC6D8AD1F2AF8B95CD17D /* Pods-ObjectiveSugarTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ObjectiveSugar.app/ObjectiveSugar";
 				FRAMEWORK_SEARCH_PATHS = (

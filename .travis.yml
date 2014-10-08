@@ -1,7 +1,6 @@
 language: objective-c
 
 before_install:
-  - gem install slather --no-rdoc --no-ri --no-document --quiet
   - cd Example
 
 install: make install

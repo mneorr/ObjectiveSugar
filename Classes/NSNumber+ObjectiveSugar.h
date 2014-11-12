@@ -16,6 +16,8 @@
 - (void)upto:(int)number do:(void(^)(NSInteger number))block;
 - (void)downto:(int)number do:(void(^)(NSInteger number))block;
 
+- (NSArray *)integers;
+
 // Numeric inflections
 - (NSNumber *)seconds;
 - (NSNumber *)minutes;

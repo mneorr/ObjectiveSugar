@@ -30,6 +30,14 @@
         block(i);
 }
 
+- (NSArray *)integers {
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:self.unsignedIntegerValue];
+    for(NSInteger i=0; i<self.unsignedIntegerValue; i++){
+        [array addObject:@(i)];
+    }
+    return array;
+}
+
 - (NSNumber *)second {
     return self.seconds;
 }

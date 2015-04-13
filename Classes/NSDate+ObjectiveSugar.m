@@ -1,3 +1,10 @@
+//
+//  NSDate+ObjectiveSugar.h
+//  Objective Sugar
+//
+//  Created by Casey Borders on 4/9/15.
+//
+
 #import "NSDate+ObjectiveSugar.h"
 #import "NSNumber+ObjectiveSugar.h"
 

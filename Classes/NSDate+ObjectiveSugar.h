@@ -1,3 +1,12 @@
+//
+//  NSDate+ObjectiveSugar.h
+//  Objective Sugar
+//
+//  Created by Casey Borders on 4/9/15.
+//
+
+// For an overview see http://cocoadocs.org/docsets/ObjectiveSugar/
+
 @interface NSDate (ObjectiveSugar)
 
 - (NSInteger)year;

@@ -21,6 +21,7 @@
 - (BOOL)isInSameWeek:(NSDate *)date;
 - (BOOL)isOnSameDay:(NSDate *)date;
 - (BOOL)isInSameHour:(NSDate *)date;
+
 - (BOOL)isBetween:(NSDate *)date1 and:(NSDate *)date2;
 
 - (BOOL)isAtLeast:(NSNumber *)time from:(NSDate *)date;

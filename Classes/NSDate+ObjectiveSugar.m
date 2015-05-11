@@ -166,14 +166,14 @@
 
 - (BOOL)isAtLeast:(NSNumber *)time from:(NSDate *)date
 {
-    BOOL atLeast = [self isOnOrBefore:[time until:date]] &&
+    BOOL atLeast = [self isOnOrBefore:[time until:date]] ||
                    [self isOnOrAfter:[time since:date]];
     return atLeast;
 }
 
 - (BOOL)isMoreThan:(NSNumber *)time from:(NSDate *)date
 {
-    BOOL moreThan = [self isBefore:[time until:date]] &&
+    BOOL moreThan = [self isBefore:[time until:date]] ||
                     [self isAfter:[time since:date]];
     return moreThan;
 }

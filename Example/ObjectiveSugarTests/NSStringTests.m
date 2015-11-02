@@ -15,7 +15,7 @@ describe(@"Foundation-style functions", ^{
 
     it(@"NSStringWithFormat makes NSString -stringWithFormat", ^{
 
-        [[NSStringWithFormat(@"This is %@", @1) should] equal:@"This is 1"];
+        [[[NSString stringWithFormat:@"This is %@", @1] should] equal:@"This is 1"];
     });
 
 });

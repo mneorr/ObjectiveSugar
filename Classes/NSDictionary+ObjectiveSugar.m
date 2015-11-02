@@ -69,4 +69,12 @@
     return omitted;
 }
 
+- (NSDictionary *)invert {
+    NSMutableDictionary *inverted = [NSMutableDictionary dictionary];
+    for (id key in [self allKeys]) {
+        inverted[self[key]] = key;
+    }
+    return inverted;
+}
+
 @end

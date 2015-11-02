@@ -116,5 +116,16 @@ describe(@"Omit", ^{
     });
 });
 
+describe(@"Invert", ^{
+    let(sampleDict, ^{ return @{ @"one" : @1,
+                                 @"two" : @2,
+                                 @"three" : @3 }; });
+    
+    it(@"returns a new dictionary where keys are values and values are keys", ^{
+        [[[sampleDict invert] should] equal:@{ @1 : @"one", @2 : @"two", @3 : @"three" }];
+        NSLog(@"%@", [sampleDict invert]);
+    });
+});
+
 SPEC_END
 

@@ -166,6 +166,13 @@ numbers[range];
 [numbers reverse];
 // [@6, @5, @4, @3, @2, @1]
 
+// group pair numbers
+[numbers groupBy:^id(NSNumber *number) {
+    return @([number intValue] % 2 == 0);
+}];
+// @{@NO  : @[@1, @3, @5],
+//   @YES : @[@2, @4, @6]}
+
 
 NSArray *fruits = @[ @"banana", @"mango", @"apple", @"pear" ];
 

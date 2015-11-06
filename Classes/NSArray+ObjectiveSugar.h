@@ -155,6 +155,14 @@
 - (NSArray *)reject:(BOOL (^)(id object))block;
 
 /**
+ Iterate through current array adding the element to a dictionary asking which key to use.
+ 
+ @param A block that returns the key that should be used to add the element to the dictionary
+ @return A dictionary with the elements grouped by the key
+ */
+- (NSDictionary *)groupBy:(id (^)(id object))key;
+
+/**
  Recurse through self checking for NSArrays and extract all elements into one single array
 
  @return An array of all held arrays merged

@@ -145,6 +145,16 @@ describe(@"NSArray categories", ^{
           return @(accumulator.intValue + numbah.intValue);
         }] should] equal:@60];
     });
+    
+    it(@"-groupBy: returns a dictionary grouped with the specified keys", ^{
+        NSDictionary *groupedByPairs = [oneToTen groupBy:^id(NSNumber *number) {
+            return @([number intValue] % 2 == 0);
+        }];
+        [[groupedByPairs[@YES] should] containObjects:@2, @4, @6, @8, @10, nil];
+        [[groupedByPairs[@YES] shouldNot] containObjects:@1, @3, @5, @7, @9, nil];
+        [[groupedByPairs[@NO] should] containObjects:@1, @3, @5, @7, @9, nil];
+        [[groupedByPairs[@NO] shouldNot] containObjects:@2, @4, @6, @8, @10, nil];
+    });
   
     it(@"-unique produces a duplicate-free array", ^{
       NSArray *arrayWithDuplicates = @[@1, @1, @"something", @"something"];

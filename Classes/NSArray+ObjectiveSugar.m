@@ -114,6 +114,17 @@ static NSString * const OSMinusString = @"-";
     }]];
 }
 
+- (NSDictionary *)groupBy:(id (^)(id object))key {
+    return [self reduce:[NSMutableDictionary dictionary] withBlock:^id(NSMutableDictionary *accumulator, id object) {
+        if (!accumulator[key(object)]) {
+            accumulator[key(object)] = [NSMutableArray array];
+        }
+        [accumulator[key(object)] addObject:object];
+        return accumulator;
+    }];
+}
+
+
 - (id)detect:(BOOL (^)(id object))block {
     for (id object in self) {
         if (block(object))

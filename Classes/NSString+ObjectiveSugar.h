@@ -50,7 +50,7 @@ NSString *NSStringWithFormat(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
  @return YES if 'string' is a substring of the receiver, otherwise NO
  */
-- (BOOL)containsString:(NSString *)string;
+- (BOOL)containsCaseInsensitiveString:(NSString *)string;
 
 
 /**

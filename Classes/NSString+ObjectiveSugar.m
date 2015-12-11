@@ -55,7 +55,7 @@ NSString *NSStringWithFormat(NSString *formatString, ...) {
     return [upperCamelCase stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetter.lowercaseString];
 }
 
-- (BOOL)containsString:(NSString *) string {
+- (BOOL)containsCaseInsensitiveString:(NSString *) string {
     NSRange range = [self rangeOfString:string options:NSCaseInsensitiveSearch];
     return range.location != NSNotFound;
 }

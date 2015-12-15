@@ -31,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return First array item or nil.
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)pop:(NSUInteger)numberOfElements;
-- (void)concat:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)pop:(NSUInteger)numberOfElements;
+- (void)concat:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
 
 
 /**
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Array of first N items or empty array.
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)shift:(NSUInteger)numberOfElements;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)shift:(NSUInteger)numberOfElements;
 
 
 /**
@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block block that returns YES/NO
  @return An array of elements
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)keepIf:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)keepIf:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 @end
 

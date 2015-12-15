@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return An array with elements within the specified range
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)objectForKeyedSubscript:(id <NSCopying>)key;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)objectForKeyedSubscript:(id <NSCopying>)key;
 
 
 /**
@@ -103,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param numberOfElements Number of elements to take from array
  @return An array of elements
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)take:(NSUInteger)numberOfElements;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)take:(NSUInteger)numberOfElements;
 
 /**
  Passes elements to the `block` until the block returns NO,
@@ -112,7 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block A block that returns YES/NO
  @return An array of elements
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)takeWhile:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)takeWhile:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through the current array running the block on each object and
@@ -129,7 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block A block that returns YES/NO for whether the object should stay
  @return An array of elements selected
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)select:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)select:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array returning the first element meeting a criteria.
@@ -155,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block A block that returns YES/NO for whether the object should be removed
  @return An array of elements not rejected
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)reject:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)reject:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Recurse through self checking for NSArrays and extract all elements into one single array
@@ -190,21 +190,21 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return A sorted copy of the array
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)sort;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)sort;
 
 /**
  Sorts the array using the the default comparator on the given key
 
  @return A sorted copy of the array
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)sortBy:(NSString *)key;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)sortBy:(NSString *)key;
 
 /**
  Alias for reverseObjectEnumerator.allObjects
 
  Returns a reversed array
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)reverse;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)reverse;
 
 /**
  Return all the objects that are in both self and `array`.
@@ -212,7 +212,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return An array of objects common to both arrays
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)intersectionWithArray:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)intersectionWithArray:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
 
 /**
  Return all the objects that in both self and `array` combined.
@@ -221,7 +221,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return An array of the two arrays combined
  */
 
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)unionWithArray:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)unionWithArray:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
 
 /**
  Return all the objects in self that are not in `array`.
@@ -230,7 +230,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return An array of the self without objects in `array`
  */
 
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)relativeComplement:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)relativeComplement:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
 
 /**
  Return all the objects that are unique to each array individually
@@ -238,7 +238,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return An array of elements which are in either of the arrays and not in their intersection.
  */
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)symmetricDifference:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)symmetricDifference:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
 
 /**
  Return a single value from an array by iterating through the elements and transforming a running total.
@@ -257,7 +257,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return a new array with all unique elements
  **/
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)unique;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)unique;
 
 @end
 

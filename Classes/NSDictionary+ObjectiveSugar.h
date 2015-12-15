@@ -18,11 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)eachValue:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
 - (NSArray *)map:(id __nullable (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
 - (BOOL)hasKey:(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType))key;
-- (NSDictionary *)pick:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(KeyType) *)keys;
-- (NSDictionary *)omit:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(KeyType) *)keys;
+- (NSDictionary *)pick:(__OBJECTIVE_SUGAR_GENERICS(NSArray, KeyType) *)keys;
+- (NSDictionary *)omit:(__OBJECTIVE_SUGAR_GENERICS(NSArray, KeyType) *)keys;
 - (NSDictionary *)merge:(NSDictionary *)dictionary;
 - (NSDictionary *)merge:(NSDictionary *)dictionary block:(id __nullable (^)(id key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) oldVal, id newVal))block;
-- (NSDictionary __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType, KeyType) *)invert;
+- (__OBJECTIVE_SUGAR_GENERICS(NSDictionary, ObjectType, KeyType) *)invert;
 
 @end
 

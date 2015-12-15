@@ -30,13 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)eachWithIndex:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object, NSUInteger index))block;
 
 /// Filters the given set using provided block, and returns an array copy
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)select:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)select:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /// Keeps the objects passing the given block, and returns an array copy
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)reject:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)reject:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /// Returns a sorted array copy of the given set
-- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)sort;
+- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)sort;
 
 /**
  *  Maps the given NSSet to NSArray.

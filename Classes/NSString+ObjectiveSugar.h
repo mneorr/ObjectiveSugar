@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CompatibilityMacros.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 NSString *NSStringWithFormat(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
@@ -65,7 +68,8 @@ NSString *NSStringWithFormat(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
  
  @return A String matching the regex or nil if no match is found
  */
-- (NSString *)match:(NSString *)pattern;
+- (nullable NSString *)match:(NSString *)pattern;
 
 @end
 
+NS_ASSUME_NONNULL_END

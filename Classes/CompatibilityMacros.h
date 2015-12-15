@@ -15,3 +15,10 @@
 #   define __OBJECTIVE_SUGAR_GENERICS_PARAM(...)
 #   define __OBJECTIVE_SUGAR_GENERICS_TYPE(type)       id
 #endif
+
+#if !(__has_feature(nullability))
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#define __nullable
+#endif

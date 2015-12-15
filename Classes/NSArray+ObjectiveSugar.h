@@ -9,7 +9,9 @@
 // For an overview see http://cocoadocs.org/docsets/ObjectiveSugar/
 
 #import <Foundation/Foundation.h>
-#import "GenericHelper.h"
+#import "CompatibilityMacros.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface __OBJECTIVE_SUGAR_GENERICS(NSArray, __covariant ObjectType) (ObjectiveSugar)
 
@@ -18,24 +20,24 @@
 
  @return  The first item in the array, or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
 
 /**
  The last item in the array, or nil.
 
  @return  The last item in the array, or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
 
 /**
  A random element in the array, or nil.
 
  @return  A random element in the array, or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))sample;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))sample;
 
 /// Alias for -sample
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))anyObject;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))anyObject;
 
 
 /**
@@ -119,7 +121,7 @@
  @param block A block that passes in each object and returns a modified object
  @return An array of modified elements
  */
-- (NSArray *)map:(id (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (NSArray *)map:(id __nullable (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array asking whether to keep each element.
@@ -135,7 +137,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))detect:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))detect:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 
 /**
@@ -145,7 +147,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))find:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))find:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array asking whether to remove each element.
@@ -243,12 +245,12 @@
 
  @return A single value that is the end result of apply the block function to each element successively.
  **/
-- (id)reduce:(id (^)(id accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (nullable id)reduce:(id __nullable (^)(id __nullable accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Same as -reduce, with initial value provided by yourself
  **/
-- (id)reduce:(id)initial withBlock:(id (^)(id accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (nullable id)reduce:(nullable id)initial withBlock:(id __nullable (^)(id __nullable accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Produces a duplicate-free version of the array
@@ -259,3 +261,4 @@
 
 @end
 
+NS_ASSUME_NONNULL_END

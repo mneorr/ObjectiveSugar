@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GenericHelper.h"
+#import "CompatibilityMacros.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface __OBJECTIVE_SUGAR_GENERICS(NSMutableArray, ObjectType) (ObjectiveSugar)
 
@@ -20,7 +22,7 @@
 
  @return First array item or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))pop;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))pop;
 
 
 /**
@@ -39,7 +41,7 @@
 
  @return First array item or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))shift;
+- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))shift;
 
 
 /**
@@ -60,3 +62,5 @@
 - (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)keepIf:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 @end
+
+NS_ASSUME_NONNULL_END

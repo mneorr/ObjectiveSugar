@@ -9,32 +9,33 @@
 // For an overview see http://cocoadocs.org/docsets/ObjectiveSugar/
 
 #import <Foundation/Foundation.h>
+#import "GenericHelper.h"
 
-@interface NSArray (ObjectiveSugar)
+@interface __OBJECTIVE_SUGAR_GENERICS(NSArray, __covariant ObjectType) (ObjectiveSugar)
 
 /**
  The first item in the array, or nil.
 
  @return  The first item in the array, or nil.
  */
-- (id)first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
 
 /**
  The last item in the array, or nil.
 
  @return  The last item in the array, or nil.
  */
-- (id)last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
 
 /**
  A random element in the array, or nil.
 
  @return  A random element in the array, or nil.
  */
-- (id)sample;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))sample;
 
 /// Alias for -sample
-- (id)anyObject;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))anyObject;
 
 
 /**
@@ -50,7 +51,7 @@
 
  @return An array with elements within the specified range
  */
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))objectForKeyedSubscript:(id <NSCopying>)key;
 
 
 /**
@@ -58,14 +59,14 @@
 
  @param block A block with the object in its arguments.
  */
-- (void)each:(void (^)(id object))block;
+- (void)each:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  A simpler alias for `enumerateObjectsUsingBlock` which also passes in an index
 
  @param block A block with the object in its arguments.
  */
-- (void)eachWithIndex:(void (^)(id object, NSUInteger index))block;
+- (void)eachWithIndex:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object, NSUInteger index))block;
 
 /**
  A simpler alias for `enumerateObjectsWithOptions:usingBlock:`
@@ -74,7 +75,7 @@
  @param options Enumerating options.
  */
 
-- (void)each:(void (^)(id object))block options:(NSEnumerationOptions)options;
+- (void)each:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block options:(NSEnumerationOptions)options;
 
 /**
  A simpler alias for `enumerateObjectsWithOptions:usingBlock:` which also passes in an index
@@ -83,7 +84,7 @@
  @param options Enumerating options.
  */
 
-- (void)eachWithIndex:(void (^)(id object, NSUInteger index))block options:(NSEnumerationOptions)options;
+- (void)eachWithIndex:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object, NSUInteger index))block options:(NSEnumerationOptions)options;
 
 
 /**
@@ -91,7 +92,7 @@
 
  @param object An object that the array may or may not contain.
  */
-- (BOOL)includes:(id)object;
+- (BOOL)includes:(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))object;
 
 /**
  Take the first `numberOfElements` out of the array, or the maximum amount of
@@ -100,7 +101,7 @@
  @param numberOfElements Number of elements to take from array
  @return An array of elements
  */
-- (NSArray *)take:(NSUInteger)numberOfElements;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)take:(NSUInteger)numberOfElements;
 
 /**
  Passes elements to the `block` until the block returns NO,
@@ -109,7 +110,7 @@
  @param block A block that returns YES/NO
  @return An array of elements
  */
-- (NSArray *)takeWhile:(BOOL (^)(id object))block;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)takeWhile:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through the current array running the block on each object and
@@ -118,7 +119,7 @@
  @param block A block that passes in each object and returns a modified object
  @return An array of modified elements
  */
-- (NSArray *)map:(id (^)(id object))block;
+- (NSArray *)map:(id (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array asking whether to keep each element.
@@ -126,7 +127,7 @@
  @param block A block that returns YES/NO for whether the object should stay
  @return An array of elements selected
  */
-- (NSArray *)select:(BOOL (^)(id object))block;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)select:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array returning the first element meeting a criteria.
@@ -134,7 +135,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (id)detect:(BOOL (^)(id object))block;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))detect:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 
 /**
@@ -144,7 +145,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (id)find:(BOOL (^)(id object))block;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))find:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array asking whether to remove each element.
@@ -152,7 +153,7 @@
  @param block A block that returns YES/NO for whether the object should be removed
  @return An array of elements not rejected
  */
-- (NSArray *)reject:(BOOL (^)(id object))block;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)reject:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Recurse through self checking for NSArrays and extract all elements into one single array
@@ -187,21 +188,21 @@
 
  @return A sorted copy of the array
  */
-- (NSArray *)sort;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)sort;
 
 /**
  Sorts the array using the the default comparator on the given key
 
  @return A sorted copy of the array
  */
-- (NSArray *)sortBy:(NSString *)key;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)sortBy:(NSString *)key;
 
 /**
  Alias for reverseObjectEnumerator.allObjects
 
  Returns a reversed array
  */
-- (NSArray *)reverse;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)reverse;
 
 /**
  Return all the objects that are in both self and `array`.
@@ -209,7 +210,7 @@
 
  @return An array of objects common to both arrays
  */
-- (NSArray *)intersectionWithArray:(NSArray *)array;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)intersectionWithArray:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
 
 /**
  Return all the objects that in both self and `array` combined.
@@ -218,7 +219,7 @@
  @return An array of the two arrays combined
  */
 
-- (NSArray *)unionWithArray:(NSArray *)array;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)unionWithArray:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
 
 /**
  Return all the objects in self that are not in `array`.
@@ -227,7 +228,7 @@
  @return An array of the self without objects in `array`
  */
 
-- (NSArray *)relativeComplement:(NSArray *)array;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)relativeComplement:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
 
 /**
  Return all the objects that are unique to each array individually
@@ -235,26 +236,26 @@
 
  @return An array of elements which are in either of the arrays and not in their intersection.
  */
-- (NSArray *)symmetricDifference:(NSArray *)array;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)symmetricDifference:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
 
 /**
  Return a single value from an array by iterating through the elements and transforming a running total.
 
  @return A single value that is the end result of apply the block function to each element successively.
  **/
-- (id)reduce:(id (^)(id accumulator, id object))block;
+- (id)reduce:(id (^)(id accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Same as -reduce, with initial value provided by yourself
  **/
-- (id)reduce:(id)initial withBlock:(id (^)(id accumulator, id object))block;
+- (id)reduce:(id)initial withBlock:(id (^)(id accumulator, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Produces a duplicate-free version of the array
  
  @return a new array with all unique elements
  **/
-- (NSArray *)unique;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)unique;
 
 @end
 

@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GenericHelper.h"
 
-@interface NSDictionary (ObjectiveSugar)
+@interface __OBJECTIVE_SUGAR_GENERICS(NSDictionary, __covariant KeyType, __covariant ObjectType) (ObjectiveSugar)
 
-- (void)each:(void (^)(id key, id value))block;
-- (void)eachKey:(void (^)(id key))block;
-- (void)eachValue:(void (^)(id value))block;
-- (NSArray *)map:(id (^)(id key, id value))block;
-- (BOOL)hasKey:(id)key;
-- (NSDictionary *)pick:(NSArray *)keys;
-- (NSDictionary *)omit:(NSArray *)keys;
+- (void)each:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
+- (void)eachKey:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key))block;
+- (void)eachValue:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
+- (NSArray *)map:(id (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
+- (BOOL)hasKey:(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType))key;
+- (NSDictionary *)pick:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(KeyType) *)keys;
+- (NSDictionary *)omit:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(KeyType) *)keys;
 - (NSDictionary *)merge:(NSDictionary *)dictionary;
-- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id(^)(id key, id oldVal, id newVal))block;
-- (NSDictionary *)invert;
+- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id(^)(id key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) oldVal, id newVal))block;
+- (NSDictionary __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType, KeyType) *)invert;
 
 @end

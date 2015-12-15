@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GenericHelper.h"
 
-@interface NSMutableArray (ObjectiveSugar)
+@interface __OBJECTIVE_SUGAR_GENERICS(NSMutableArray, ObjectType) (ObjectiveSugar)
 
 /// Alias for -addObject. Appends the given object at the end
-- (void)push:(id)object;
+- (void)push:(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))object;
 
 /**
  Removes the last item of the array, and returns that item
@@ -19,7 +20,7 @@
 
  @return First array item or nil.
  */
-- (id)pop;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))pop;
 
 
 /**
@@ -28,8 +29,8 @@
 
  @return First array item or nil.
  */
-- (NSArray *)pop:(NSUInteger)numberOfElements;
-- (void)concat:(NSArray *)array;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)pop:(NSUInteger)numberOfElements;
+- (void)concat:(NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)array;
 
 
 /**
@@ -38,7 +39,7 @@
 
  @return First array item or nil.
  */
-- (id)shift;
+- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))shift;
 
 
 /**
@@ -47,7 +48,7 @@
 
  @return Array of first N items or empty array.
  */
-- (NSArray *)shift:(NSUInteger)numberOfElements;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)shift:(NSUInteger)numberOfElements;
 
 
 /**
@@ -56,6 +57,6 @@
  @param block block that returns YES/NO
  @return An array of elements
  */
-- (NSArray *)keepIf:(BOOL (^)(id object))block;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)keepIf:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 @end

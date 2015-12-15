@@ -51,7 +51,7 @@
 
  @return An array with elements within the specified range
  */
-- (__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))objectForKeyedSubscript:(id <NSCopying>)key;
+- (NSArray __OBJECTIVE_SUGAR_GENERICS_PARAM(ObjectType) *)objectForKeyedSubscript:(id <NSCopying>)key;
 
 
 /**

@@ -78,8 +78,8 @@
 
 - (NSInteger)dayOfYear
 {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger dayOfYear = [gregorian ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:self];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSUInteger dayOfYear = [gregorian ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:self];
     return dayOfYear;
 }
 
@@ -228,7 +228,7 @@
 - (NSInteger)yearsUntil:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSYearCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitYear fromDate:self toDate:date options:0];
     NSInteger years = [components year];
     return years;
 }
@@ -236,7 +236,7 @@
 - (NSInteger)monthsUntil:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSMonthCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitMonth fromDate:self toDate:date options:0];
     NSInteger months = [components month];
     return months;
 }
@@ -244,7 +244,7 @@
 - (NSInteger)daysUntil:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSDayCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitDay fromDate:self toDate:date options:0];
     NSInteger days = [components day];
     return days;
 }
@@ -252,7 +252,7 @@
 - (NSInteger)hoursUntil:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSHourCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitHour fromDate:self toDate:date options:0];
     NSInteger hours = [components hour];
     return hours;
 }
@@ -260,7 +260,7 @@
 - (NSInteger)secondsUntil:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSSecondCalendarUnit fromDate:self toDate:date options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitSecond fromDate:self toDate:date options:0];
     NSInteger seconds = [components second];
     return seconds;
 }
@@ -268,7 +268,7 @@
 - (NSInteger)yearsSince:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSYearCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitYear fromDate:date toDate:self options:0];
     NSInteger years = [components year];
     return years;
 }
@@ -276,7 +276,7 @@
 - (NSInteger)monthsSince:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSMonthCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitMonth fromDate:date toDate:self options:0];
     NSInteger months = [components month];
     return months;
 }
@@ -284,7 +284,7 @@
 - (NSInteger)daysSince:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSDayCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitDay fromDate:date toDate:self options:0];
     NSInteger days = [components day];
     return days;
 }
@@ -292,7 +292,7 @@
 - (NSInteger)hoursSince:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSHourCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitHour fromDate:date toDate:self options:0];
     NSInteger hours = [components hour];
     return hours;
 }
@@ -300,7 +300,7 @@
 - (NSInteger)secondsSince:(NSDate *)date
 {
     NSCalendar *gregorian = [self gregorianUTCCalendar];
-    NSDateComponents *components = [gregorian components:NSSecondCalendarUnit fromDate:date toDate:self options:0];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitSecond fromDate:date toDate:self options:0];
     NSInteger seconds = [components second];
     return seconds;
 }

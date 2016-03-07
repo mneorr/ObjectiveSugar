@@ -51,9 +51,9 @@ describe(@"NSMutableArray categories", ^{
     });
 
     it(@"-keepIf keeps the objects passing the block", ^{
-        NSMutableArray *array = @[@8, @5, @9, @1, @7, @14, @17, @87, @64].mutableCopy;
+        NSMutableArray<NSNumber *> *array = @[@8, @5, @9, @1, @7, @14, @17, @87, @64].mutableCopy;
 
-        [array keepIf:^BOOL(id object) {
+        [array keepIf:^BOOL(NSNumber * _Nonnull object) {
             return [object intValue] % 2 == 0;
         }];
 

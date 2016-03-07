@@ -121,7 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block A block that passes in each object and returns a modified object
  @return An array of modified elements
  */
-- (NSArray *)map:(id __nullable (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (NSArray *)map:(id(^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
 
 /**
  Iterate through current array asking whether to keep each element.

@@ -72,7 +72,7 @@ describe(@"NSArray categories", ^{
     });
 
     it(@"-map returns an array of objects returned by the block", ^{
-        NSArray<NSNumber *> *mapped = [sampleArray map:^NSNumber * _Nullable(NSString * _Nonnull object) {
+        NSArray<NSNumber *> *mapped = [sampleArray map:^NSNumber * _Nonnull(NSString * _Nonnull object) {
             return [NSNumber numberWithBool:[object isEqualToString:@"second"]];
         }];
 
@@ -81,7 +81,7 @@ describe(@"NSArray categories", ^{
 
     it(@"-map treats nils the same way as -valueForKeyPath:", ^{
         NSArray<NSDictionary<NSString *, NSString *> *> *users = @[@{@"name": @"Marin"},@{},@{@"name": @"Neil"}];
-        [[[users map:^NSString * _Nullable(NSDictionary<NSString *, NSString *> * _Nonnull user) {
+        [[[users map:^id _Nonnull(NSDictionary<NSString *,NSString *> * _Nonnull user) {
             return user[@"name"];
         }] should] equal:[users valueForKey:@"name"]];
     });

@@ -200,6 +200,7 @@
 				89690126173C0E4C00B403D2 /* Frameworks */,
 				89690127173C0E4C00B403D2 /* Resources */,
 				13656AD991424BF58F43F5B7 /* Copy Pods Resources */,
+				34003E363187F882590698FF /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +221,7 @@
 				89690146173C0E4C00B403D2 /* Resources */,
 				89690147173C0E4C00B403D2 /* ShellScript */,
 				174A1F9A81B44DC6B8B6DFD9 /* Copy Pods Resources */,
+				8C8CED5FBE2E1BD86B22BBB8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,6 +311,21 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectiveSugarTests/Pods-ObjectiveSugarTests-resources.sh\"\n";
 		};
+		34003E363187F882590698FF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		468DABF301EC4EC1A00CC4C2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +352,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		8C8CED5FBE2E1BD86B22BBB8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectiveSugarTests/Pods-ObjectiveSugarTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		BC624B20376C4C728DE6A392 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

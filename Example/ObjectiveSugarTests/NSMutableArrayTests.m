@@ -9,6 +9,7 @@
 #import "ObjectiveSugar.h"
 #import "Kiwi.h"
 
+NS_ASSUME_NONNULL_BEGIN
 SPEC_BEGIN(MutableArrayAdditions)
 
 describe(@"NSMutableArray categories", ^{
@@ -53,7 +54,7 @@ describe(@"NSMutableArray categories", ^{
     it(@"-keepIf keeps the objects passing the block", ^{
         NSMutableArray<NSNumber *> *array = @[@8, @5, @9, @1, @7, @14, @17, @87, @64].mutableCopy;
 
-        [array keepIf:^BOOL(NSNumber * _Nonnull object) {
+        [array keepIf:^BOOL(NSNumber *object) {
             return [object intValue] % 2 == 0;
         }];
 
@@ -63,3 +64,4 @@ describe(@"NSMutableArray categories", ^{
 });
 
 SPEC_END
+NS_ASSUME_NONNULL_END

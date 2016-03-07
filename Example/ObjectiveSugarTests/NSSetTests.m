@@ -9,6 +9,7 @@
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
 
+NS_ASSUME_NONNULL_BEGIN
 SPEC_BEGIN(SetAdditions)
 
 describe(@"Iterators", ^{
@@ -21,7 +22,7 @@ describe(@"Iterators", ^{
         it(@"iterates using -each:^", ^{
             NSMutableArray<NSString *> *duplicate = [sampleSet.allObjects mutableCopy];
 
-            [sampleSet each:^(NSString * _Nonnull object) {
+            [sampleSet each:^(NSString *object) {
                 [[duplicate should] contain:object];
                 [duplicate removeObject:object];
             }];
@@ -31,7 +32,7 @@ describe(@"Iterators", ^{
         it(@"iterates using -eachWithIndex:^", ^{
             NSMutableArray<NSString *> *duplicate = [sampleSet.allObjects mutableCopy];
 
-            [sampleSet eachWithIndex:^(NSString * _Nonnull object, NSUInteger index) {
+            [sampleSet eachWithIndex:^(NSString *object, NSUInteger index) {
                 [[object should] equal:sampleSet.allObjects[index]];
                 [duplicate removeObject:object];
             }];
@@ -76,7 +77,7 @@ describe(@"Iterators", ^{
         });
 
         it(@"-map returns an array of objects returned by the block", ^{
-            NSArray<NSNumber *> *mapped = [sampleSet map:^NSNumber *_Nonnull(NSString * _Nonnull object) {
+            NSArray<NSNumber *> *mapped = [sampleSet map:^NSNumber *(NSString *object) {
                 return @([object isEqualToString:@"third"]);
             }];
             [[mapped should] containObjects:@NO, @YES, @NO, nil];
@@ -84,7 +85,7 @@ describe(@"Iterators", ^{
 
         it(@"-map treats nils the same way as -valueForKeyPath:", ^{
             NSSet<NSDictionary<NSString *, NSString *> *> *users = [NSSet setWithArray:@[@{@"name": @"Marin"}, @{@"fake": @"value"}, @{@"name": @"Neil"}]];
-            NSArray<NSString *> *mappedUsers = [users map:^NSString * _Nonnull(NSDictionary<NSString *,NSString *> * _Nonnull user) {
+            NSArray<NSString *> *mappedUsers = [users map:^NSString *(NSDictionary<NSString *,NSString *> *user) {
                 return user[@"name"];
             }];
 
@@ -94,26 +95,26 @@ describe(@"Iterators", ^{
         });
 
         it(@"-select returns an array containing all the elements of NSArray for which block is not false", ^{
-            [[[cars select:^BOOL(NSString * _Nonnull car) {
+            [[[cars select:^BOOL(NSString *car) {
                 return [car isEqualToString:@"F50"];
             }] should] equal:@[ @"F50" ]];
         });
 
         it(@"-reject returns an array containing all the elements of NSArray for which block is false", ^{
-            [[[cars reject:^BOOL(NSString * _Nonnull car) {
+            [[[cars reject:^BOOL(NSString *car) {
                 return [car isEqualToString:@"F50"];
             }] should] equal:@[ @"F458 Italia", @"Testarossa" ]];
         });
 
         it(@"-reduce returns a result of all the elements", ^{
-            [[[items reduce:^id _Nullable(id  _Nullable accumulator, id  _Nonnull item) {
+            [[[items reduce:^id _Nullable(id  _Nullable accumulator, id item) {
                 return [accumulator[@"value"] intValue] > [item[@"value"] intValue]
                 ? accumulator : item;
             }] should] equal:@{ @"value": @9 }];
         });
 
         it(@"-reduce:withBlock with accumulator behaves like -reduce and starts with user provided element", ^{
-            [[[items reduce:@0 withBlock:^NSNumber * _Nullable(NSNumber * _Nullable accumulator, id  _Nonnull item) {
+            [[[items reduce:@0 withBlock:^NSNumber * _Nullable(NSNumber * _Nullable accumulator, id item) {
                 return @(accumulator.intValue + [item[@"value"] intValue]);
             }] should] equal:@18];
         });
@@ -132,4 +133,4 @@ describe(@"Iterators", ^{
 });
 
 SPEC_END
-
+NS_ASSUME_NONNULL_END

@@ -9,6 +9,7 @@
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
 
+NS_ASSUME_NONNULL_BEGIN
 SPEC_BEGIN(DictionaryAdditions)
 
 describe(@"Iterators", ^{
@@ -30,7 +31,7 @@ describe(@"Iterators", ^{
 
 
     it(@"iterates each key and value", ^{
-        [sampleDict each:^(NSString * _Nonnull key, NSNumber * _Nonnull value) {
+        [sampleDict each:^(NSString *key, NSNumber *value) {
             [[sampleDict.allKeys[counter] should] equal:key];
             [[sampleDict.allValues[counter] should] equal:value];
             counter ++;
@@ -38,21 +39,21 @@ describe(@"Iterators", ^{
     });
 
     it(@"iterates all keys", ^{
-        [sampleDict eachKey:^(NSString * _Nonnull key) {
+        [sampleDict eachKey:^(NSString *key) {
             [[sampleDict.allKeys[counter] should] equal:key];
             counter ++;
         }];
     });
 
     it(@"iterates all values", ^{
-        [sampleDict eachValue:^(NSNumber * _Nonnull value) {
+        [sampleDict eachValue:^(NSNumber *value) {
             [[sampleDict.allValues[counter] should] equal:value];
             counter ++;
         }];
     });
 
     it(@"iterates all keys when mapping", ^{
-        NSArray<NSString *> *mapped = [sampleDict map:^NSString * _Nullable(NSString * _Nonnull key, NSNumber * _Nonnull value) {
+        NSArray<NSString *> *mapped = [sampleDict map:^NSString * _Nullable(NSString *key, NSNumber *value) {
             counter ++;
             return key;
         }];
@@ -61,7 +62,7 @@ describe(@"Iterators", ^{
     });
 
     it(@"iterates all values when mapping", ^{
-        NSArray<NSNumber *> *mapped = [sampleDict map:^NSNumber * _Nullable(NSString * _Nonnull key, NSNumber * _Nonnull value) {
+        NSArray<NSNumber *> *mapped = [sampleDict map:^NSNumber * _Nullable(NSString *key, NSNumber *value) {
             counter ++;
             return value;
         }];
@@ -148,4 +149,4 @@ describe(@"Invert", ^{
 });
 
 SPEC_END
-
+NS_ASSUME_NONNULL_END

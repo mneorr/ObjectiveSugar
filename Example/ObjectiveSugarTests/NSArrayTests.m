@@ -9,6 +9,8 @@
 #import "ObjectiveSugar.h"
 #import "Kiwi.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 SPEC_BEGIN(ArrayAdditions)
 
 describe(@"NSArray categories", ^{
@@ -34,14 +36,14 @@ describe(@"NSArray categories", ^{
     context(@"Iterating using block", ^{
 
         it(@"iterates using -each:^", ^{
-            [sampleArray each:^(NSString * _Nonnull object) {
+            [sampleArray each:^(NSString *object) {
                 [duplicate addObject:object];
             }];
             [[duplicate should] equal:sampleArray];
         });
 
         it(@"iterates using -eachWithIndex:^", ^{
-            [sampleArray eachWithIndex:^(NSString * _Nonnull object, NSUInteger index) {
+            [sampleArray eachWithIndex:^(NSString *object, NSUInteger index) {
                 [[object should] equal:[sampleArray objectAtIndex:index]];
                 [duplicate addObject:object];
             }];
@@ -49,7 +51,7 @@ describe(@"NSArray categories", ^{
         });
 
         it(@"iterates using -each:^withOptions:", ^{
-            [sampleArray each:^(NSString * _Nonnull object) {
+            [sampleArray each:^(NSString *object) {
                 [duplicate addObject:object];
             } options:NSEnumerationReverse];
 
@@ -57,7 +59,7 @@ describe(@"NSArray categories", ^{
         });
 
         it(@"iterates using -eachWithIndex:^withOptions:", ^{
-            [sampleArray eachWithIndex:^(NSString * _Nonnull object, NSUInteger index) {
+            [sampleArray eachWithIndex:^(NSString *object, NSUInteger index) {
                 [[object should] equal:[sampleArray objectAtIndex:index]];
                 [duplicate addObject:object];
             } options:NSEnumerationReverse];
@@ -72,7 +74,7 @@ describe(@"NSArray categories", ^{
     });
 
     it(@"-map returns an array of objects returned by the block", ^{
-        NSArray<NSNumber *> *mapped = [sampleArray map:^NSNumber * _Nonnull(NSString * _Nonnull object) {
+        NSArray<NSNumber *> *mapped = [sampleArray map:^NSNumber *(NSString *object) {
             return [NSNumber numberWithBool:[object isEqualToString:@"second"]];
         }];
 
@@ -81,37 +83,37 @@ describe(@"NSArray categories", ^{
 
     it(@"-map treats nils the same way as -valueForKeyPath:", ^{
         NSArray<NSDictionary<NSString *, NSString *> *> *users = @[@{@"name": @"Marin"},@{},@{@"name": @"Neil"}];
-        [[[users map:^id _Nonnull(NSDictionary<NSString *,NSString *> * _Nonnull user) {
+        [[[users map:^id(NSDictionary<NSString *,NSString *> *user) {
             return user[@"name"];
         }] should] equal:[users valueForKey:@"name"]];
     });
 
     it(@"-select returns an array containing all the elements of NSArray for which block is not false", ^{
-        [[[oneToTen select:^BOOL(NSNumber * _Nonnull object) {
+        [[[oneToTen select:^BOOL(NSNumber *object) {
             return [object integerValue] % 3 == 0;
         }] should] equal:@[ @3, @6, @9 ]];
     });
 
     it(@"-detect returns the first element in NSArray for which block is true", ^{
-        [[[oneToTen detect:^BOOL(NSNumber * _Nonnull object) {
+        [[[oneToTen detect:^BOOL(NSNumber *object) {
             return [object intValue] % 3 == 0;
         }] should] equal:@3];
     });
 
     it(@"-detect is safe", ^{
-       [[[oneToTen detect:^BOOL(NSNumber * _Nonnull object) {
+       [[[oneToTen detect:^BOOL(NSNumber *object) {
            return [object intValue] == 1232132143;
        }] should] beNil];
     });
 
     it(@"-find aliases detect", ^{
-        [[[oneToTen find:^BOOL(NSNumber * _Nonnull object) {
+        [[[oneToTen find:^BOOL(NSNumber *object) {
             return [object intValue] % 3 == 0;
         }] should] equal:@3];
     });
 
     it(@"-reject returns an array containing all the elements of NSArray for which block is false", ^{
-        [[[oneToTen reject:^BOOL(NSNumber * _Nonnull object) {
+        [[[oneToTen reject:^BOOL(NSNumber *object) {
             return [object integerValue] % 3 == 0;
         }] should] equal:@[ @1, @2, @4, @5, @7, @8, @10 ]];
     });
@@ -127,21 +129,21 @@ describe(@"NSArray categories", ^{
     });
 
     it(@"-reduce returns a result of all the elements", ^{
-        [[[sampleArray reduce:^NSString * _Nullable(NSString * _Nullable accumulator, NSString * _Nonnull word) {
+        [[[sampleArray reduce:^NSString * _Nullable(NSString *accumulator, NSString *word) {
             return [accumulator stringByAppendingString:word.uppercaseString];
         }] should] equal:@"firstSECONDTHIRD"];
 
-        [[[oneToTen reduce:^NSNumber * _Nullable(NSNumber * _Nullable accumulator, NSNumber * _Nonnull numbah) {
+        [[[oneToTen reduce:^NSNumber * _Nullable(NSNumber *accumulator, NSNumber *numbah) {
             return @(accumulator.intValue + numbah.intValue);
         }] should] equal:@55];
     });
 
     it(@"-reduce:withBlock with accumulator behaves like -reduce and starts with user provided element", ^{
-        [[[sampleArray reduce:@"" withBlock:^NSString * _Nullable(NSString * _Nullable accumulator, NSString * _Nonnull word) {
+        [[[sampleArray reduce:@"" withBlock:^NSString * _Nullable(NSString * _Nullable accumulator, NSString *word) {
             return [accumulator stringByAppendingString:word.uppercaseString];
         }] should] equal:@"FIRSTSECONDTHIRD"];
 
-        [[[oneToTen reduce:@5 withBlock:^NSNumber * _Nullable(NSNumber * _Nullable accumulator, NSNumber * _Nonnull numbah) {
+        [[[oneToTen reduce:@5 withBlock:^NSNumber * _Nullable(NSNumber * _Nullable accumulator, NSNumber *numbah) {
           return @(accumulator.intValue + numbah.intValue);
         }] should] equal:@60];
     });
@@ -163,7 +165,7 @@ describe(@"NSArray categories", ^{
         });
 
         it(@"creates subset of array using block", ^{
-            [[[sampleArray takeWhile:^BOOL(NSString * _Nonnull object) {
+            [[[sampleArray takeWhile:^BOOL(NSString *object) {
 
                 return ![object isEqualToString:@"third"];
 
@@ -279,5 +281,7 @@ describe(@"Set operations", ^{
 
 
 SPEC_END
+
+NS_ASSUME_NONNULL_END
 
 

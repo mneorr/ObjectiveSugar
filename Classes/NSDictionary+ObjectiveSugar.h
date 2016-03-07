@@ -7,22 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CompatibilityMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface __OBJECTIVE_SUGAR_GENERICS(NSDictionary, __covariant KeyType, __covariant ObjectType) (ObjectiveSugar)
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (ObjectiveSugar)
 
-- (void)each:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
-- (void)eachKey:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key))block;
-- (void)eachValue:(void (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
-- (NSArray *)map:(id __nullable (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType) key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) value))block;
-- (BOOL)hasKey:(__OBJECTIVE_SUGAR_GENERICS_TYPE(KeyType))key;
-- (NSDictionary *)pick:(__OBJECTIVE_SUGAR_GENERICS(NSArray, KeyType) *)keys;
-- (NSDictionary *)omit:(__OBJECTIVE_SUGAR_GENERICS(NSArray, KeyType) *)keys;
-- (NSDictionary *)merge:(NSDictionary *)dictionary;
-- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id __nullable (^)(id key, __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) oldVal, id newVal))block;
-- (__OBJECTIVE_SUGAR_GENERICS(NSDictionary, ObjectType, KeyType) *)invert;
+- (void)each:(void (^)(KeyType key, ObjectType value))block;
+- (void)eachKey:(void (^)(KeyType key))block;
+- (void)eachValue:(void (^)(ObjectType value))block;
+- (NSArray *)map:(id __nullable (^)(KeyType key, ObjectType value))block;
+- (BOOL)hasKey:(KeyType)key;
+- (NSDictionary<KeyType, ObjectType> *)pick:(NSArray<KeyType> *)keys;
+- (NSDictionary<KeyType, ObjectType> *)omit:(NSArray<KeyType> *)keys;
+- (NSDictionary<KeyType, ObjectType> *)merge:(NSDictionary<KeyType, ObjectType> *)dictionary;
+- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id __nullable (^)(id key, ObjectType oldVal, id newVal))block;
+- (NSDictionary<ObjectType, KeyType> *)invert;
 
 @end
 

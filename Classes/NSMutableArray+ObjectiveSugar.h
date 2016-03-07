@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CompatibilityMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface __OBJECTIVE_SUGAR_GENERICS(NSMutableArray, ObjectType) (ObjectiveSugar)
+@interface NSMutableArray<ObjectType> (ObjectiveSugar)
 
 /// Alias for -addObject. Appends the given object at the end
-- (void)push:(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))object;
+- (void)push:(ObjectType)object;
 
 /**
  Removes the last item of the array, and returns that item
@@ -22,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return First array item or nil.
  */
-- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))pop;
+- (nullable ObjectType)pop;
 
 
 /**
@@ -31,8 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return First array item or nil.
  */
-- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)pop:(NSUInteger)numberOfElements;
-- (void)concat:(__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)array;
+- (NSArray<ObjectType> *)pop:(NSUInteger)numberOfElements;
+- (void)concat:(NSArray<ObjectType> *)array;
 
 
 /**
@@ -41,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return First array item or nil.
  */
-- (nullable __OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType))shift;
+- (nullable ObjectType)shift;
 
 
 /**
@@ -50,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return Array of first N items or empty array.
  */
-- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)shift:(NSUInteger)numberOfElements;
+- (NSArray<ObjectType> *)shift:(NSUInteger)numberOfElements;
 
 
 /**
@@ -59,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block block that returns YES/NO
  @return An array of elements
  */
-- (__OBJECTIVE_SUGAR_GENERICS(NSArray, ObjectType) *)keepIf:(BOOL (^)(__OBJECTIVE_SUGAR_GENERICS_TYPE(ObjectType) object))block;
+- (NSArray<ObjectType> *)keepIf:(BOOL (^)(ObjectType object))block;
 
 @end
 

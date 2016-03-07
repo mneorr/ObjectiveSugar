@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableArray (ObjectiveSugar)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSMutableArray<ObjectType> (ObjectiveSugar)
 
 /// Alias for -addObject. Appends the given object at the end
-- (void)push:(id)object;
+- (void)push:(ObjectType)object;
 
 /**
  Removes the last item of the array, and returns that item
@@ -19,7 +21,7 @@
 
  @return First array item or nil.
  */
-- (id)pop;
+- (nullable ObjectType)pop;
 
 
 /**
@@ -28,8 +30,8 @@
 
  @return First array item or nil.
  */
-- (NSArray *)pop:(NSUInteger)numberOfElements;
-- (void)concat:(NSArray *)array;
+- (NSArray<ObjectType> *)pop:(NSUInteger)numberOfElements;
+- (void)concat:(NSArray<ObjectType> *)array;
 
 
 /**
@@ -38,7 +40,7 @@
 
  @return First array item or nil.
  */
-- (id)shift;
+- (nullable ObjectType)shift;
 
 
 /**
@@ -47,7 +49,7 @@
 
  @return Array of first N items or empty array.
  */
-- (NSArray *)shift:(NSUInteger)numberOfElements;
+- (NSArray<ObjectType> *)shift:(NSUInteger)numberOfElements;
 
 
 /**
@@ -56,6 +58,8 @@
  @param block block that returns YES/NO
  @return An array of elements
  */
-- (NSArray *)keepIf:(BOOL (^)(id object))block;
+- (NSArray<ObjectType> *)keepIf:(BOOL (^)(ObjectType object))block;
 
 @end
+
+NS_ASSUME_NONNULL_END

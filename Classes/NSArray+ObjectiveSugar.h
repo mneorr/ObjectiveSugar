@@ -10,31 +10,33 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (ObjectiveSugar)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSArray<__covariant ObjectType> (ObjectiveSugar)
 
 /**
  The first item in the array, or nil.
 
  @return  The first item in the array, or nil.
  */
-- (id)first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
+- (nullable ObjectType)first DEPRECATED_MSG_ATTRIBUTE("Please use -firstObject instead");
 
 /**
  The last item in the array, or nil.
 
  @return  The last item in the array, or nil.
  */
-- (id)last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
+- (nullable ObjectType)last DEPRECATED_MSG_ATTRIBUTE("Please use -lastObject instead");
 
 /**
  A random element in the array, or nil.
 
  @return  A random element in the array, or nil.
  */
-- (id)sample;
+- (nullable ObjectType)sample;
 
 /// Alias for -sample
-- (id)anyObject;
+- (nullable ObjectType)anyObject;
 
 
 /**
@@ -50,7 +52,7 @@
 
  @return An array with elements within the specified range
  */
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
+- (NSArray<ObjectType> *)objectForKeyedSubscript:(id <NSCopying>)key;
 
 
 /**
@@ -58,14 +60,14 @@
 
  @param block A block with the object in its arguments.
  */
-- (void)each:(void (^)(id object))block;
+- (void)each:(void (^)(ObjectType object))block;
 
 /**
  A simpler alias for `enumerateObjectsUsingBlock` which also passes in an index
 
  @param block A block with the object in its arguments.
  */
-- (void)eachWithIndex:(void (^)(id object, NSUInteger index))block;
+- (void)eachWithIndex:(void (^)(ObjectType object, NSUInteger index))block;
 
 /**
  A simpler alias for `enumerateObjectsWithOptions:usingBlock:`
@@ -74,7 +76,7 @@
  @param options Enumerating options.
  */
 
-- (void)each:(void (^)(id object))block options:(NSEnumerationOptions)options;
+- (void)each:(void (^)(ObjectType object))block options:(NSEnumerationOptions)options;
 
 /**
  A simpler alias for `enumerateObjectsWithOptions:usingBlock:` which also passes in an index
@@ -83,7 +85,7 @@
  @param options Enumerating options.
  */
 
-- (void)eachWithIndex:(void (^)(id object, NSUInteger index))block options:(NSEnumerationOptions)options;
+- (void)eachWithIndex:(void (^)(ObjectType object, NSUInteger index))block options:(NSEnumerationOptions)options;
 
 
 /**
@@ -91,7 +93,7 @@
 
  @param object An object that the array may or may not contain.
  */
-- (BOOL)includes:(id)object;
+- (BOOL)includes:(ObjectType)object;
 
 /**
  Take the first `numberOfElements` out of the array, or the maximum amount of
@@ -100,7 +102,7 @@
  @param numberOfElements Number of elements to take from array
  @return An array of elements
  */
-- (NSArray *)take:(NSUInteger)numberOfElements;
+- (NSArray<ObjectType> *)take:(NSUInteger)numberOfElements;
 
 /**
  Passes elements to the `block` until the block returns NO,
@@ -109,7 +111,7 @@
  @param block A block that returns YES/NO
  @return An array of elements
  */
-- (NSArray *)takeWhile:(BOOL (^)(id object))block;
+- (NSArray<ObjectType> *)takeWhile:(BOOL (^)(ObjectType object))block;
 
 /**
  Iterate through the current array running the block on each object and
@@ -118,7 +120,7 @@
  @param block A block that passes in each object and returns a modified object
  @return An array of modified elements
  */
-- (NSArray *)map:(id (^)(id object))block;
+- (NSArray *)map:(id(^)(ObjectType object))block;
 
 /**
  Iterate through current array asking whether to keep each element.
@@ -126,7 +128,7 @@
  @param block A block that returns YES/NO for whether the object should stay
  @return An array of elements selected
  */
-- (NSArray *)select:(BOOL (^)(id object))block;
+- (NSArray<ObjectType> *)select:(BOOL (^)(ObjectType object))block;
 
 /**
  Iterate through current array returning the first element meeting a criteria.
@@ -134,7 +136,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (id)detect:(BOOL (^)(id object))block;
+- (nullable ObjectType)detect:(BOOL (^)(ObjectType object))block;
 
 
 /**
@@ -144,7 +146,7 @@
  @param block A block that returns YES/NO
  @return The first matching element
  */
-- (id)find:(BOOL (^)(id object))block;
+- (nullable ObjectType)find:(BOOL (^)(ObjectType object))block;
 
 /**
  Iterate through current array asking whether to remove each element.
@@ -152,7 +154,7 @@
  @param block A block that returns YES/NO for whether the object should be removed
  @return An array of elements not rejected
  */
-- (NSArray *)reject:(BOOL (^)(id object))block;
+- (NSArray<ObjectType> *)reject:(BOOL (^)(ObjectType object))block;
 
 /**
  Recurse through self checking for NSArrays and extract all elements into one single array
@@ -187,21 +189,21 @@
 
  @return A sorted copy of the array
  */
-- (NSArray *)sort;
+- (NSArray<ObjectType> *)sort;
 
 /**
  Sorts the array using the the default comparator on the given key
 
  @return A sorted copy of the array
  */
-- (NSArray *)sortBy:(NSString *)key;
+- (NSArray<ObjectType> *)sortBy:(NSString *)key;
 
 /**
  Alias for reverseObjectEnumerator.allObjects
 
  Returns a reversed array
  */
-- (NSArray *)reverse;
+- (NSArray<ObjectType> *)reverse;
 
 /**
  Return all the objects that are in both self and `array`.
@@ -209,7 +211,7 @@
 
  @return An array of objects common to both arrays
  */
-- (NSArray *)intersectionWithArray:(NSArray *)array;
+- (NSArray<ObjectType> *)intersectionWithArray:(NSArray<ObjectType> *)array;
 
 /**
  Return all the objects that in both self and `array` combined.
@@ -218,7 +220,7 @@
  @return An array of the two arrays combined
  */
 
-- (NSArray *)unionWithArray:(NSArray *)array;
+- (NSArray<ObjectType> *)unionWithArray:(NSArray<ObjectType> *)array;
 
 /**
  Return all the objects in self that are not in `array`.
@@ -227,7 +229,7 @@
  @return An array of the self without objects in `array`
  */
 
-- (NSArray *)relativeComplement:(NSArray *)array;
+- (NSArray<ObjectType> *)relativeComplement:(NSArray<ObjectType> *)array;
 
 /**
  Return all the objects that are unique to each array individually
@@ -235,26 +237,27 @@
 
  @return An array of elements which are in either of the arrays and not in their intersection.
  */
-- (NSArray *)symmetricDifference:(NSArray *)array;
+- (NSArray<ObjectType> *)symmetricDifference:(NSArray<ObjectType> *)array;
 
 /**
  Return a single value from an array by iterating through the elements and transforming a running total.
 
  @return A single value that is the end result of apply the block function to each element successively.
  **/
-- (id)reduce:(id (^)(id accumulator, id object))block;
+- (nullable id)reduce:(id __nullable (^)(id __nullable accumulator, ObjectType object))block;
 
 /**
  Same as -reduce, with initial value provided by yourself
  **/
-- (id)reduce:(id)initial withBlock:(id (^)(id accumulator, id object))block;
+- (nullable id)reduce:(nullable id)initial withBlock:(id __nullable (^)(id __nullable accumulator, ObjectType object))block;
 
 /**
  Produces a duplicate-free version of the array
  
  @return a new array with all unique elements
  **/
-- (NSArray *)unique;
+- (NSArray<ObjectType> *)unique;
 
 @end
 
+NS_ASSUME_NONNULL_END

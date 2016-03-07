@@ -8,17 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (ObjectiveSugar)
+NS_ASSUME_NONNULL_BEGIN
 
-- (void)each:(void (^)(id key, id value))block;
-- (void)eachKey:(void (^)(id key))block;
-- (void)eachValue:(void (^)(id value))block;
-- (NSArray *)map:(id (^)(id key, id value))block;
-- (BOOL)hasKey:(id)key;
-- (NSDictionary *)pick:(NSArray *)keys;
-- (NSDictionary *)omit:(NSArray *)keys;
-- (NSDictionary *)merge:(NSDictionary *)dictionary;
-- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id(^)(id key, id oldVal, id newVal))block;
-- (NSDictionary *)invert;
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (ObjectiveSugar)
+
+- (void)each:(void (^)(KeyType key, ObjectType value))block;
+- (void)eachKey:(void (^)(KeyType key))block;
+- (void)eachValue:(void (^)(ObjectType value))block;
+- (NSArray *)map:(id __nullable (^)(KeyType key, ObjectType value))block;
+- (BOOL)hasKey:(KeyType)key;
+- (NSDictionary<KeyType, ObjectType> *)pick:(NSArray<KeyType> *)keys;
+- (NSDictionary<KeyType, ObjectType> *)omit:(NSArray<KeyType> *)keys;
+- (NSDictionary<KeyType, ObjectType> *)merge:(NSDictionary<KeyType, ObjectType> *)dictionary;
+- (NSDictionary *)merge:(NSDictionary *)dictionary block:(id __nullable (^)(id key, ObjectType oldVal, id newVal))block;
+- (NSDictionary<ObjectType, KeyType> *)invert;
 
 @end
+
+NS_ASSUME_NONNULL_END

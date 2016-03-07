@@ -9,11 +9,12 @@
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
 
+NS_ASSUME_NONNULL_BEGIN
 SPEC_BEGIN(DictionaryAdditions)
 
 describe(@"Iterators", ^{
 
-    NSDictionary *sampleDict = @{
+    NSDictionary<NSString *, NSNumber *> *sampleDict = @{
         @"one" : @1,
         @"two" : @2,
         @"three" : @3
@@ -30,7 +31,7 @@ describe(@"Iterators", ^{
 
 
     it(@"iterates each key and value", ^{
-        [sampleDict each:^(id key, id value) {
+        [sampleDict each:^(NSString *key, NSNumber *value) {
             [[sampleDict.allKeys[counter] should] equal:key];
             [[sampleDict.allValues[counter] should] equal:value];
             counter ++;
@@ -38,21 +39,21 @@ describe(@"Iterators", ^{
     });
 
     it(@"iterates all keys", ^{
-        [sampleDict eachKey:^(id key){
+        [sampleDict eachKey:^(NSString *key) {
             [[sampleDict.allKeys[counter] should] equal:key];
             counter ++;
         }];
     });
 
     it(@"iterates all values", ^{
-        [sampleDict eachValue:^(id value){
+        [sampleDict eachValue:^(NSNumber *value) {
             [[sampleDict.allValues[counter] should] equal:value];
             counter ++;
         }];
     });
 
     it(@"iterates all keys when mapping", ^{
-        NSArray *mapped = [sampleDict map:^id(id key, id value) {
+        NSArray<NSString *> *mapped = [sampleDict map:^NSString * _Nullable(NSString *key, NSNumber *value) {
             counter ++;
             return key;
         }];
@@ -61,7 +62,7 @@ describe(@"Iterators", ^{
     });
 
     it(@"iterates all values when mapping", ^{
-        NSArray *mapped = [sampleDict map:^id(id key, id value) {
+        NSArray<NSNumber *> *mapped = [sampleDict map:^NSNumber * _Nullable(NSString *key, NSNumber *value) {
             counter ++;
             return value;
         }];
@@ -72,7 +73,7 @@ describe(@"Iterators", ^{
 
 describe(@"Keys", ^{
 
-    NSDictionary *sampleDict = @{
+    NSDictionary<NSString *, id> *sampleDict = @{
         @"one": @1,
         @"two": @2,
         @"null": [NSNull null]
@@ -90,7 +91,7 @@ describe(@"Keys", ^{
 });
 
 describe(@"Pick", ^{
-    NSDictionary *sampleDict = @{
+    NSDictionary<NSString *, id> *sampleDict = @{
         @"one": @1,
         @"two": @2,
         @"null": [NSNull null]
@@ -105,7 +106,7 @@ describe(@"Pick", ^{
 });
 
 describe(@"Omit", ^{
-    NSDictionary *sampleDict = @{
+    NSDictionary<NSString *, id> *sampleDict = @{
         @"one": @1,
         @"two": @2,
         @"null": [NSNull null]
@@ -148,4 +149,4 @@ describe(@"Invert", ^{
 });
 
 SPEC_END
-
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSNumber (ObjectiveSugar)
 
 - (void)times:(void(^)(void))block;
@@ -43,3 +45,5 @@
 - (NSDate *)fromNow;
 
 @end
+
+NS_ASSUME_NONNULL_END

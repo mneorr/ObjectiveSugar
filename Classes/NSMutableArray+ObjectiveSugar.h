@@ -21,7 +21,6 @@
  */
 - (id)pop;
 
-
 /**
  Removes the last n items of the array, and returns that item
  Note: This method changes the length of the array!
@@ -31,7 +30,6 @@
 - (NSArray *)pop:(NSUInteger)numberOfElements;
 - (void)concat:(NSArray *)array;
 
-
 /**
  Removes the first item of the array, and returns that item
  Note: This method changes the length of the array!
@@ -39,7 +37,6 @@
  @return First array item or nil.
  */
 - (id)shift;
-
 
 /**
  Removes N first items of the array, and returns that items
@@ -49,7 +46,6 @@
  */
 - (NSArray *)shift:(NSUInteger)numberOfElements;
 
-
 /**
  Deletes every element of the array for which the given block evaluates to NO.
 
@@ -57,5 +53,14 @@
  @return An array of elements
  */
 - (NSArray *)keepIf:(BOOL (^)(id object))block;
+/**
+ Sorts the array by a given key
+ */
+- (void)sortArrayByKey:(NSString *)key ascending:(BOOL)ascending;
+/**
+ Sorts the array by the given keys (each value in ascendingArray (YES/NO)
+ corresponds to a key in the keys keys array.
+ */
+- (void)sortArrayByKeys:(NSArray *)keys ascending:(NSArray *)ascendingArray;
 
 @end

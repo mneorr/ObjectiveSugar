@@ -12,7 +12,7 @@
 @implementation NSMutableArray (ObjectiveSugar)
 
 - (void)push:(id)object {
-    [self addObject:object];
+    if (object) [self addObject:object];
 }
 
 - (id)pop {

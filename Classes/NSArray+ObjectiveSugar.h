@@ -121,6 +121,15 @@
 - (NSArray *)map:(id (^)(id object))block;
 
 /**
+ Iterate through the current array running the selector against each object and
+ returning an array of the new objects.
+ 
+ @param A selector to be perform on each object
+ @return An array of new elements
+ */
+- (NSArray *)mapSelector:(SEL)selector;
+
+/**
  Iterate through current array asking whether to keep each element.
 
  @param block A block that returns YES/NO for whether the object should stay

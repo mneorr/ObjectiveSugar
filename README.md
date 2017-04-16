@@ -119,6 +119,9 @@ NSArray *cars = @[@"Testarossa", @"F50", @"F458 Italia"]; // or NSSet
 }];
 // array of Car objects
 
+[cars mapSelector:@selector(uppercaseString)];
+// TESTAROSSA, F50, F458 ITALIA
+
 NSArray *mixedData = @[ @1, @"Objective Sugar!", @"Github", @4, @"5"];
 
 [mixedData select:^BOOL(id object) {

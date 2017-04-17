@@ -6,6 +6,7 @@ A set of functional additions for Foundation you wish you'd had in the first pla
 
 
 [![Build Status](https://travis-ci.org/supermarin/ObjectiveSugar.svg?branch=master)](https://travis-ci.org/supermarin/ObjectiveSugar)
+TEST
 
 
 ## Usage

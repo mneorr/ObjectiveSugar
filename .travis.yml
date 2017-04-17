@@ -7,3 +7,5 @@ install: make install
 
 script: make ci
 
+after_success: slather
+

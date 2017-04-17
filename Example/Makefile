@@ -9,6 +9,8 @@ test:
 	$(xcodebuild) test | tee xcodebuild.log
 
 install:
+	gem install activesupport --no-ri --no-rdoc
+	gem install slather --no-ri --no-rdoc
 	gem install cocoapods --no-ri --no-rdoc
 	gem install xcpretty  --no-ri --no-rdoc
 	pod install
